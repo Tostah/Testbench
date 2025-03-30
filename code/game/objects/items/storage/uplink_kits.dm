@@ -792,7 +792,7 @@
 
 /obj/item/storage/box/syndie_kit/Xenomorph_Friend
 	name = "Xenomorph Domestication Kit"
-	desc = "Contains everything you'll need to breed and control the perfect organism"
+	desc = "Contains everything you'll need to create and control the perfect organism"
 
 /obj/item/storage/box/syndie_kit/Xenomorph_Friend/PopulateContents()
 	generate_items_inside(list(
