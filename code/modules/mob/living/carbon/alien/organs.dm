@@ -104,6 +104,7 @@
 	. = ..()
 	organ_owner.faction |= ROLE_ALIEN
 	ADD_TRAIT(organ_owner, TRAIT_XENO_IMMUNE, ORGAN_TRAIT)
+	organ_owner.grant_language(/datum/language/xenocommon)
 
 /obj/item/organ/internal/alien/hivenode/Remove(mob/living/carbon/organ_owner, special = FALSE)
 	organ_owner.faction -= ROLE_ALIEN
