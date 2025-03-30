@@ -23,7 +23,7 @@
 /obj/item/autosurgeon/organ/mantis_blade/l
 	starting_organ = /obj/item/organ/internal/cyberimp/arm/item_set/mantis/l
 
-/obj/item/autosurgeon/organ/hivenode
+/obj/item/autosurgeon/organ/syndicate/hivenode
 	starting_organ = /obj/item/organ/internal/alien/hivenode
 
 /obj/item/autosurgeon/organ/syndicate/syndie_mantis
