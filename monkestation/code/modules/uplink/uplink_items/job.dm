@@ -85,10 +85,10 @@
 	cost = 13
 	item = /obj/item/storage/box/syndie_kit/khan_package
 
-/datum/uplink_item/device_tools/Xenomorph_Friend
+/datum/uplink_item/role_restricted/Xenomorph_Friend
 	name = "Domesticated Xenomorph Kit"
 	desc = "Through years of rigorous study (and glorious combat), we have turned mans greatest enemy, into mans greatest ally, against man. \
-			Contained in this kit, is a dry-stored xenomorph embryo and a few hive nodes. A hive node must be implanted into yourself and your allies. \
+			Contained in this kit, is a xenomorph embryo and a few hive nodes. A hive node must be implanted into yourself and your allies. \
 			The embryo requires a live victim. A monkey will suffice. It is reccomended that you contain the implanted monkey in an area without vents. \
 			You will have a mental link with the resulting xenomorph and any offspring, similar to a queens link with their kin."
 	cost = 25 // just above the 20 they start with, so they will need to get assistance in some capacity
