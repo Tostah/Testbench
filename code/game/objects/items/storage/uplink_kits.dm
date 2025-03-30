@@ -789,6 +789,15 @@
 		/obj/item/sbeacondrop/horse = 1,
 		/obj/item/food/grown/apple = 1,
 	), src)
+	/obj/item/storage/box/syndie_kit/Xenomorph_Friend
+	name = "Xenomorph Domestication Kit"
+	desc = "Contains everything you'll need to breed and control the perfect organism"
+
+/obj/item/storage/box/syndie_kit/Xenomorph_Friend/PopulateContents()
+	generate_items_inside(list(
+		/obj/item/organ/internal/body_egg/alien_embryo = 1,
+		/obj/item/organ/internal/alien/hivenode = 1,
+	), src)
 
 #undef KIT_RECON
 #undef KIT_BLOODY_SPAI
