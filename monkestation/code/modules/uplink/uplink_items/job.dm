@@ -84,6 +84,7 @@
 	desc = "A... questionably packed box written on with gray crayon. It's really hard to read. We hope that your assistant mind can comprehend it better than us."
 	cost = 13
 	item = /obj/item/storage/box/syndie_kit/khan_package
+	restricted_roles = list(JOB_ASSISTANT)
 
 /datum/uplink_item/role_restricted/Xenomorph_Friend
 	name = "Domesticated Xenomorph Kit"
