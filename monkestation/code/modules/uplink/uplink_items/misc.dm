@@ -80,3 +80,17 @@
 	surplus = 0
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
 	item = /obj/item/storage/briefcase/evilbundle
+
+/datum/uplink_item/device_tools/Hivenode_Implanter
+	name = "Hive Node Implanter"
+	desc = "Have Nanotrasens finest allowed yet another captive xenomorph to escape? Or do you want to assist one in breaking out? \
+			Regardless if the infestation started because of The Companies negligence, or if its a wild infestation, this hive node \
+			will allow you to appear as an ally to these creatures. By mimicking the psionic communication commonly found between \
+			a Queen and her kin, you are able to control and weaponize brutal infestations."
+	cost = 10
+	lock_other_purchases = FALSE
+	cant_discount = FALSE
+	illegal_tech = FALSE
+	surplus = 0
+	purchasable_from = ~ALL
+	item = /obj/item/autosurgeon/organ/hivenode
