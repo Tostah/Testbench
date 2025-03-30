@@ -84,10 +84,10 @@
 /datum/uplink_item/device_tools/Xenomorph_Friend
 	name = "Domesticated Xenomorph Kit"
 	desc = "Through years of rigorous study (and glorious murder), we have turned mans greatest enemy, into mans greatest ally, against man. \
-			Contained in this kit, is a dry-stored xenomorph embryo and a hive node. The hive node must be implanted into yourself. \
+			Contained in this kit, is a dry-stored xenomorph embryo and a few hive nodes. A hive node must be implanted into yourself and your allies. \
 			The embryo requires a live victim. A monkey will suffice. It is reccomended that you contain the implanted monkey in an area without vents. \
 			You will have a mental link with the resulting xenomorph and any offspring, similar to a queens link with their kin."
-	cost = 20 //Similar costs to cortical borers, plasmaflood, murderbone, his grace, or other species or round ending threats
+	cost = 20
 	lock_other_purchases = FALSE
 	cant_discount = FALSE
 	illegal_tech = FALSE
