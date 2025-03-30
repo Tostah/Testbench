@@ -87,7 +87,7 @@
 	restricted_roles = list(JOB_ASSISTANT)
 
 /datum/uplink_item/role_restricted/Xenomorph_Friend
-	name = "Domesticated Xenomorph Kit"
+	name = "Xenomorph Domestication Kit"
 	desc = "Through years of rigorous study (and glorious combat), we have turned mans greatest enemy, into mans greatest ally, against man. \
 			Contained in this kit, is a xenomorph embryo and hive node implanter. You must implant the hive node into yourself, and the embro into a live victim. \
 			It is reccomended that you contain the implanted victim in an area without vents. You will have a mental link with the resulting xenomorph and any offspring."
