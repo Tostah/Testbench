@@ -90,7 +90,7 @@
 	name = "Xenomorph Domestication Kit"
 	desc = "Through years of rigorous study (and glorious combat), we have turned mans greatest enemy, into mans greatest ally, against man. \
 			Contained in this kit, is a xenomorph embryo and hive node implanter. You must implant the hive node into yourself, and the embro into a live victim. \
-			It is reccomended that you contain the implanted victim in an area without vents. You will have a mental link with the resulting xenomorph and any offspring."
+			It is reccomended that you contain the implanted victim in an area without vents. You will have a mental link with the resulting xenomorph."
 	cost = 25 //All of their available TC, plus 5 more which they will have to find
 	item = /obj/item/storage/box/syndie_kit/Xenomorph_Friend
 	restricted_roles = list(JOB_GENETICIST, JOB_SCIENTIST, JOB_RESEARCH_DIRECTOR, JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_VIROLOGIST)
