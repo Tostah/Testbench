@@ -59,15 +59,13 @@
 	. = ..()
 	if(!.)
 		return FALSE
-	if(!islarva(owner))
-		return FALSE
 
-	var/mob/living/carbon/alien/neutered_larva/larva = owner
-	if(larva.handcuffed || larva.legcuffed) // Cuffing larvas ? Eh ?
+	var/mob/living/carbon/alien/neutered_larva/neutered_larva = owner
+	if(neutered_larva.handcuffed || neutered_larva.legcuffed) // Cuffing larvas ? Eh ?
 		return FALSE
-	if(larva.amount_grown < larva.max_grown)
+	if(neutered_larva.amount_grown < neutered_larva.max_grown)
 		return FALSE
-	if(larva.movement_type & VENTCRAWLING)
+	if(neutered_larva.movement_type & VENTCRAWLING)
 		return FALSE
 
 	return TRUE

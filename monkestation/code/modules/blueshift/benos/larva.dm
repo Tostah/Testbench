@@ -132,19 +132,19 @@
 
 /datum/action/cooldown/alien/neutered_larva_evolve/proc/spawn_new_neutered_xeno(alien_caste1)
 	var/mob/living/carbon/alien/adult/nova/new_xeno
-	var/mob/living/carbon/alien/larva/larva = owner
+	var/mob/living/carbon/alien/neutered_larva/neutered_larva = owner
 
 	switch(alien_caste1)
 		if("Runner")
-			new_xeno = new /mob/living/carbon/alien/adult/nova/runner(larva.loc)
+			new_xeno = new /mob/living/carbon/alien/adult/nova/runner(neutered_larva.loc)
 		if("Sentinel")
-			new_xeno = new /mob/living/carbon/alien/adult/nova/sentinel(larva.loc)
+			new_xeno = new /mob/living/carbon/alien/adult/nova/sentinel(neutered_larva.loc)
 		if("Defender")
-			new_xeno = new /mob/living/carbon/alien/adult/nova/defender(larva.loc)
+			new_xeno = new /mob/living/carbon/alien/adult/nova/defender(neutered_larva.loc)
 		//if("Drone")
 		//	new_xeno = new /mob/living/carbon/alien/adult/nova/drone(larva.loc)
 		else
 			CRASH("Alien evolve was given an invalid / incorrect alien cast type. Got: [alien_caste1]")
 
 	new_xeno.has_just_evolved()
-	larva.alien_evolve(new_xeno)
+	neutered_larva.alien_evolve(new_xeno)
