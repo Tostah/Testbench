@@ -1,22 +1,21 @@
-// This is to replace the previous datum/disease/alien_embryo for slightly improved handling and maintainability
-// It functions almost identically (see code/datums/diseases/alien_embryo.dm)
-/obj/item/organ/internal/body_egg/alien_embryo
-	name = "alien embryo"
+// This creates a new item, a neutered embryo, which forces the resulting xenomorph to NOT PICK DRONE. No infestation!
+/obj/item/organ/internal/body_egg/neutered_alien_embryo
+	name = "neutered alien embryo"
 	icon = 'icons/mob/nonhuman-player/alien.dmi'
 	icon_state = "larva0_dead"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/toxin/acid = 10)
 	///What stage of growth the embryo is at. Developed embryos give the host symptoms suggesting that an embryo is inside them.
 	var/stage = 0
 	/// Are we bursting out of the poor sucker who's the xeno mom?
-	var/bursting = FALSE
+	var/bursting = true
 	/// How long does it take to advance one stage? Growth time * 5 = how long till we make a Larva!
 	var/growth_time = 60 SECONDS
 
-/obj/item/organ/internal/body_egg/alien_embryo/Initialize(mapload)
+/obj/item/organ/internal/body_egg/neutered_alien_embryo/Initialize(mapload)
 	. = ..()
 	advance_embryo_stage()
 
-/obj/item/organ/internal/body_egg/alien_embryo/on_find(mob/living/finder)
+/obj/item/organ/internal/body_egg/neutered_alien_embryo/on_find(mob/living/finder)
 	..()
 	if(stage < 5)
 		to_chat(finder, span_notice("It's small and weak, barely the size of a foetus."))
@@ -25,7 +24,7 @@
 		if(prob(10))
 			attempt_grow() // monkestation edit: remove gib_on_success, as we don't gib the victim anymore
 
-/obj/item/organ/internal/body_egg/alien_embryo/on_life(seconds_per_tick, times_fired)
+/obj/item/organ/internal/body_egg/neutered_alien_embryo/on_life(seconds_per_tick, times_fired)
 	. = ..()
 	if(QDELETED(src) || QDELETED(owner))
 		return
@@ -58,7 +57,7 @@
 			owner.adjustToxLoss(5 * seconds_per_tick) // Why is this [TOX]?
 
 /// Controls Xenomorph Embryo growth. If embryo is fully grown (or overgrown), stop the proc. If not, increase the stage by one and if it's not fully grown (stage 6), add a timer to do this proc again after however long the growth time variable is.
-/obj/item/organ/internal/body_egg/alien_embryo/proc/advance_embryo_stage()
+/obj/item/organ/internal/body_egg/neutered_alien_embryo/proc/advance_embryo_stage()
 	if(stage >= 6)
 		return
 	stage++
@@ -73,7 +72,7 @@
 
 		addtimer(CALLBACK(src, PROC_REF(advance_embryo_stage)), growth_time*slowdown)
 
-/obj/item/organ/internal/body_egg/alien_embryo/egg_process()
+/obj/item/organ/internal/body_egg/neutered_alien_embryo/egg_process()
 	if(stage == 6 && prob(50))
 		for(var/datum/surgery/operations as anything in owner.surgeries)
 			if(operations.location != BODY_ZONE_CHEST)
@@ -85,7 +84,7 @@
 		attempt_grow()
 
 ///Attempt to burst an alien outside of the host, getting a ghost to play as the xeno.
-/obj/item/organ/internal/body_egg/alien_embryo/proc/attempt_grow() // monkestation edit: remove gib_on_success, as we don't gib the victim anymore
+/obj/item/organ/internal/body_egg/neutered_alien_embryo/proc/attempt_grow() // monkestation edit: remove gib_on_success, as we don't gib the victim anymore
 	if(!owner || bursting)
 		return
 
@@ -117,7 +116,7 @@
 	addtimer(CALLBACK(owner, TYPE_PROC_REF(/atom, cut_overlay), overlay), 0.7 SECONDS) // monkestation edit: just use a timer to always ensure the overlay is removed
 
 	var/atom/xeno_loc = get_turf(owner)
-	var/mob/living/carbon/alien/larva/new_xeno = new(xeno_loc, FALSE)
+	var/mob/living/carbon/alien/larva/new_xeno = new(xeno_loc, TRUE) //spawns the neutered larva!
 	new_xeno.key = ghost.key
 	SEND_SOUND(new_xeno, sound('sound/voice/hiss5.ogg',0,0,0,100)) //To get the player's attention
 	new_xeno.add_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_IMMOBILIZED, TRAIT_NO_TRANSFORM), type) //so we don't move during the bursting animation
@@ -146,7 +145,7 @@
 Proc: AddInfectionImages(C)
 Des: Adds the infection image to all aliens for this embryo
 ----------------------------------------*/
-/obj/item/organ/internal/body_egg/alien_embryo/AddInfectionImages()
+/obj/item/organ/internal/body_egg/neutered_alien_embryo/AddInfectionImages()
 	for(var/mob/living/carbon/alien/alien in GLOB.player_list)
 		var/I = image('icons/mob/nonhuman-player/alien.dmi', loc = owner, icon_state = "infected[stage]")
 		alien.client?.images += I
@@ -155,7 +154,7 @@ Des: Adds the infection image to all aliens for this embryo
 Proc: RemoveInfectionImage(C)
 Des: Removes all images from the mob infected by this embryo
 ----------------------------------------*/
-/obj/item/organ/internal/body_egg/alien_embryo/RemoveInfectionImages()
+/obj/item/organ/internal/body_egg/neutered_alien_embryo/RemoveInfectionImages()
 	for(var/mob/living/carbon/alien/alien in GLOB.player_list)
 		for(var/image/I in alien.client?.images)
 			var/searchfor = "infected"

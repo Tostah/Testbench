@@ -1,6 +1,6 @@
 
 
-/datum/action/cooldown/alien/larva_evolve/Activate(atom/target)
+/datum/action/cooldown/alien/larva_evolve/Activate(atom/target, IS_NEUTERED)
 	var/static/list/caste_options
 	if(!caste_options)
 		caste_options = list()
@@ -33,15 +33,15 @@
 		destroyer of stationary objects should the hive have the capacity."),
 		caste_options = caste_options,
 		)
-
-		make_xeno_caste_entry(
-		caste_name = "Drone",
-		caste_image  = image(icon = 'monkestation/code/modules/blueshift/icons/xeno_actions.dmi', icon_state = "preview_drone"),
-		caste_info = span_info("Drones are a somewhat weak, although fairly quick caste that fills a mainly \
-		support role in a hive, having a higher plasma capacity than most first evolutions, and the ability to \
-		make a healing aura for nearby xenos. Drones are the only caste that can evolve into both praetorians and \
-		queens, though only one queen and one praetorian may exist at any time."),
-		caste_options = caste_options,
+		if(!IS_NEUTERED)
+			make_xeno_caste_entry(
+			caste_name = "Drone",
+			caste_image  = image(icon = 'monkestation/code/modules/blueshift/icons/xeno_actions.dmi', icon_state = "preview_drone"),
+			caste_info = span_info("Drones are a somewhat weak, although fairly quick caste that fills a mainly \
+			support role in a hive, having a higher plasma capacity than most first evolutions, and the ability to \
+			make a healing aura for nearby xenos. Drones are the only caste that can evolve into both praetorians and \
+			queens, though only one queen and one praetorian may exist at any time."),
+			caste_options = caste_options,
 		)
 
 	var/alien_caste = show_radial_menu(owner, owner, caste_options, radius = 38, require_near = TRUE, tooltips = TRUE)
