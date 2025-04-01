@@ -31,7 +31,7 @@
 		destroyer of stationary objects should the hive have the capacity."),
 		caste_options = caste_options,
 		)
-		if(HAS_TRAIT(target, TRAIT_NEUTERED))
+		if(!HAS_TRAIT(target, TRAIT_NEUTERED))
 			make_xeno_caste_entry(
 			caste_name = "Drone",
 			caste_image  = image(icon = 'monkestation/code/modules/blueshift/icons/xeno_actions.dmi', icon_state = "preview_drone"),
