@@ -255,7 +255,7 @@ Des: Removes all images from the mob infected by this embryo
 	bursting = TRUE
 
 	var/list/mob/dead/observer/candidates = SSpolling.poll_ghost_candidates(
-		"Do you want to play as an alien larva that will burst out of [owner.real_name]?",
+		"Do you want to play as a neutered alien larva that will burst out of [owner.real_name]?",
 		role = ROLE_ALIEN,
 		check_jobban = ROLE_ALIEN,
 		poll_time = 10 SECONDS,
@@ -280,7 +280,8 @@ Des: Removes all images from the mob infected by this embryo
 	addtimer(CALLBACK(owner, TYPE_PROC_REF(/atom, cut_overlay), overlay), 0.7 SECONDS) // monkestation edit: just use a timer to always ensure the overlay is removed
 
 	var/atom/xeno_loc = get_turf(owner)
-	var/mob/living/carbon/alien/neutered_larva/new_xeno = new(xeno_loc)
+	var/mob/living/carbon/alien/larva/new_xeno = new(xeno_loc)
+	new_xeno.add_traits(list(TRAIT_NEUTERED), INNATE_TRAIT)
 	new_xeno.key = ghost.key
 	SEND_SOUND(new_xeno, sound('sound/voice/hiss5.ogg',0,0,0,100)) //To get the player's attention
 	new_xeno.add_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_IMMOBILIZED, TRAIT_NO_TRANSFORM), type) //so we don't move during the bursting animation
@@ -301,6 +302,7 @@ Des: Removes all images from the mob infected by this embryo
 	owner.log_message("had an alien larva within them burst.", LOG_ATTACK, log_globally = FALSE)
 	owner.apply_damage(150, BRUTE, BODY_ZONE_CHEST, wound_bonus = 30, sharpness = SHARP_POINTY) //You aren't getting gibbed but you aren't going to be having fun
 	owner.spawn_gibs()
+
 	// monkestation end
 	qdel(src)
 
