@@ -117,7 +117,7 @@
 	addtimer(CALLBACK(owner, TYPE_PROC_REF(/atom, cut_overlay), overlay), 0.7 SECONDS) // monkestation edit: just use a timer to always ensure the overlay is removed
 
 	var/atom/xeno_loc = get_turf(owner)
-	var/mob/living/carbon/alien/larva/new_xeno = new(xeno_loc)
+	var/mob/living/carbon/alien/larva/new_xeno = new(xeno_loc, FALSE)
 	new_xeno.key = ghost.key
 	SEND_SOUND(new_xeno, sound('sound/voice/hiss5.ogg',0,0,0,100)) //To get the player's attention
 	new_xeno.add_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_IMMOBILIZED, TRAIT_NO_TRANSFORM), type) //so we don't move during the bursting animation
@@ -161,6 +161,8 @@ Des: Removes all images from the mob infected by this embryo
 			var/searchfor = "infected"
 			if(I.loc == owner && findtext(I.icon_state, searchfor, 1, length(searchfor) + 1))
 				qdel(I)
+
+
 // This is to replace the previous datum/disease/alien_embryo for slightly improved handling and maintainability
 // It functions almost identically (see code/datums/diseases/alien_embryo.dm)
 /obj/item/organ/internal/body_egg/neutered_alien_embryo
@@ -280,10 +282,10 @@ Des: Removes all images from the mob infected by this embryo
 	addtimer(CALLBACK(owner, TYPE_PROC_REF(/atom, cut_overlay), overlay), 0.7 SECONDS) // monkestation edit: just use a timer to always ensure the overlay is removed
 
 	var/atom/xeno_loc = get_turf(owner)
-	var/mob/living/carbon/alien/larva/new_xeno = new(xeno_loc)
-	new_xeno.add_traits(list(TRAIT_NEUTERED), INNATE_TRAIT)
+	var/mob/living/carbon/alien/larva/new_xeno = new(xeno_loc, TRUE)
 	new_xeno.key = ghost.key
 	SEND_SOUND(new_xeno, sound('sound/voice/hiss5.ogg',0,0,0,100)) //To get the player's attention
+	ADD_TRAIT(new_xeno, TRAIT_NEUTERED, INNATE_TRAIT)
 	new_xeno.add_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_IMMOBILIZED, TRAIT_NO_TRANSFORM), type) //so we don't move during the bursting animation
 	new_xeno.invisibility = INVISIBILITY_MAXIMUM
 
