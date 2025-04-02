@@ -798,6 +798,7 @@
 	generate_items_inside(list(
 		/obj/item/organ/internal/body_egg/neutered_alien_embryo = 1,
 		/obj/item/autosurgeon/organ/syndicate/hivenode = 1,
+		/obj/item/food/monkeycube = 1,
 	), src)
 
 #undef KIT_RECON

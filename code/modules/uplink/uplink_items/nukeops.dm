@@ -849,4 +849,13 @@
 	item = /obj/item/keycard/syndicate_fridge
 	cost = 5
 	purchasable_from = UPLINK_CLOWN_OPS | UPLINK_NUKE_OPS
-
+/datum/uplink_item/support/Xenomorph_Operative
+	name = "Xenomorph Operative Reinforcements"
+	desc = "Through years of research (And glorious combat) we have discovered how to domesticate the fearsome xenomorph. \
+			You will need to implant the embryo into a live victim. A monkey cube is provided for this \
+			Upon hatching, the xenomorph larva instantly imprints on the first person it sees, considering them the queen. \
+			Make sure this is you. The larva cannot evolve into a Drone or a Queen, so it cannot reproduce. \
+			Implant the hive node to be able to telepathically communicate with it."
+	item = /obj/item/storage/box/syndie_kit/Xenomorph_Friend
+	cost = 30 //More than operative reinforcements, less than cyborg reinforcements
+	purchasable_from = UPLINK_CLOWN_OPS | UPLINK_NUKE_OPS

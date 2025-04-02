@@ -88,9 +88,11 @@
 
 /datum/uplink_item/role_restricted/Xenomorph_Friend
 	name = "Xenomorph Domestication Kit"
-	desc = "Through years of rigorous study (and glorious combat), we have turned mans greatest enemy, into mans greatest ally, against man. \
-			Contained in this kit, is a xenomorph embryo and hive node implanter. You must implant the hive node into yourself, and the embro into a live victim. \
-			It is reccomended that you contain the implanted victim in an area without vents. You will have a mental link with the resulting xenomorph."
+	desc = "Through years of research (And glorious combat) we have discovered how to domesticate the fearsome xenomorph. \
+			You will need to implant the embryo into a live victim. A monkey cube is provided for this, just add water. \
+			Upon hatching, the xenomorph larva instantly imprints on the first person it sees, considering them the queen. \
+			Make sure this is you. The larva cannot evolve into a Drone or a Queen, so it cannot reproduce. \
+			Implant the hive node to be able to telepathically communicate with it."
 	cost = 20 //Same price as neutered cortical borer
 	item = /obj/item/storage/box/syndie_kit/Xenomorph_Friend
 	restricted_roles = list(JOB_GENETICIST, JOB_SCIENTIST, JOB_RESEARCH_DIRECTOR, JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_VIROLOGIST)
