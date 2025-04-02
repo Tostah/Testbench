@@ -92,7 +92,7 @@
 			You will need to implant the embryo into a live victim. A monkey cube is provided for this, just add water. \
 			Upon hatching, the xenomorph larva instantly imprints on the first person it sees, considering them the queen. \
 			Make sure this is you. The larva cannot evolve into a Drone or a Queen, so it cannot reproduce. \
-			Implant the hive node to be able to telepathically communicate with it."
+			Implant the hive node in yourself to be able to telepathically communicate with it."
 	cost = 20 //Same price as neutered cortical borer
 	item = /obj/item/storage/box/syndie_kit/Xenomorph_Friend
 	restricted_roles = list(JOB_GENETICIST, JOB_SCIENTIST, JOB_RESEARCH_DIRECTOR, JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_VIROLOGIST)
