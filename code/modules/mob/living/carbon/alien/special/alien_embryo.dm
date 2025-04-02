@@ -285,7 +285,6 @@ Des: Removes all images from the mob infected by this embryo
 	var/mob/living/carbon/alien/larva/new_xeno = new(xeno_loc, TRUE)
 	new_xeno.key = ghost.key
 	SEND_SOUND(new_xeno, sound('sound/voice/hiss5.ogg',0,0,0,100)) //To get the player's attention
-	ADD_TRAIT(new_xeno, TRAIT_NEUTERED, INNATE_TRAIT)
 	new_xeno.add_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_IMMOBILIZED, TRAIT_NO_TRANSFORM), type) //so we don't move during the bursting animation
 	new_xeno.invisibility = INVISIBILITY_MAXIMUM
 

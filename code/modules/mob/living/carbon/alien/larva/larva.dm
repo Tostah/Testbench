@@ -37,6 +37,7 @@
 	if(Neuter)
 		var/datum/action/cooldown/alien/neutered_larva_evolve/evolution = new(src)
 		evolution.Grant(src)
+		mind.add_antag_datum(/datum/antagonist/xeno/neutered)
 	else
 		var/datum/action/cooldown/alien/larva_evolve/evolution = new(src)
 		evolution.Grant(src)
