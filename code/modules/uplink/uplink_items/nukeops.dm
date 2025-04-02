@@ -852,7 +852,7 @@
 /datum/uplink_item/support/Xenomorph_Operative
 	name = "Xenomorph Operative Reinforcements"
 	desc = "Through years of research (And glorious combat) we have discovered how to domesticate the fearsome xenomorph. \
-			You will need to implant the embryo into a live victim. A monkey cube is provided for this \
+			You will need to implant the embryo into a live victim. A monkey cube is provided for this, just add water. \
 			Upon hatching, the xenomorph larva instantly imprints on the first person it sees, considering them the queen. \
 			Make sure this is you. The larva cannot evolve into a Drone or a Queen, so it cannot reproduce. \
 			Implant the hive node to be able to telepathically communicate with it."
