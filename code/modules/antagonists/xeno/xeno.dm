@@ -52,6 +52,17 @@
 	objective.owner = owner
 	objectives += objective
 
+
+/datum/antagonist/xeno/neutered
+	name = "\improper neutered Xenomorph"
+	///Our associated antagonist team for neutered xenomorphs
+
+/datum/antagonist/xeno/neutered/forge_objectives()
+	var/datum/objective/follow_orders/objective = new
+	objective.owner = owner
+	objectives += objective
+	..()
+
 /datum/antagonist/xeno/captive
 	name = "\improper Captive Xenomorph"
 	///Our associated antagonist team for captive xenomorphs
@@ -97,6 +108,14 @@
 	explanation_text = "Survive and advance the Hive."
 
 /datum/objective/advance_hive/check_completion()
+	return owner.current.stat != DEAD
+
+/datum/objective/follow_orders
+
+/datum/objective/follow_orders/New()
+	explanation_text = "The first person you see is the Queen. Follow their orders."
+
+/datum/objective/follow_orders/check_completion()
 	return owner.current.stat != DEAD
 
 ///Captive Xenomorphs team
@@ -158,6 +177,8 @@
 	if(!mind.has_antag_datum(/datum/antagonist/xeno))
 		if(SScommunications.xenomorph_egg_delivered && istype(get_area(src), SScommunications.captivity_area))
 			mind.add_antag_datum(/datum/antagonist/xeno/captive)
+		if(HAS_TRAIT(src, TRAIT_NEUTERED))
+			mind.add_antag_datum(/datum/antagonist/xeno/neutered)
 		else
 			mind.add_antag_datum(/datum/antagonist/xeno)
 
