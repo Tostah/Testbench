@@ -93,6 +93,6 @@
 			and implant a living victim with it. You can use the provided monkey cube, just add water and it will grow into a full monkey.  \
 			Wait about 5 minutes, and the larva will burst from the monkey. The larva instantly imprints on the first person it sees, considering them the queen. \
 			Make sure this is you. "
-	cost = 20 //Same price as neutered cortical borer
+	cost = 10
 	item = /obj/item/storage/box/syndie_kit/Xenomorph_Friend
 	restricted_roles = list(JOB_GENETICIST, JOB_SCIENTIST, JOB_RESEARCH_DIRECTOR, JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_VIROLOGIST)
