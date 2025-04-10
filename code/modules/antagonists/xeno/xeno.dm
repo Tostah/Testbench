@@ -54,7 +54,7 @@
 
 //MONKEYSTATION EDIT BEGIN
 /datum/antagonist/xeno/neutered
-	name = "\improper neutered Xenomorph"
+	name = "\improper Neutered Xenomorph"
 
 /datum/antagonist/neutered_xeno/on_gain()
 	forge_objectives()
