@@ -162,6 +162,7 @@ Des: Removes all images from the mob infected by this embryo
 			if(I.loc == owner && findtext(I.icon_state, searchfor, 1, length(searchfor) + 1))
 				qdel(I)
 
+
 // Yes, its essentially a dirty copy-paste of the alien embryo code. But, this needs to happen because its a special type of embryo
 // that produces a special type of larva. So it needs to be its own separate item. I think anyway. Plus its more modular this way
 /obj/item/organ/internal/body_egg/neutered_alien_embryo

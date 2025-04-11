@@ -36,8 +36,11 @@
 /mob/living/carbon/alien/larva/Initialize(mapload, Neuter)
 	if(Neuter) // Monkeystation EDIT. A check for the neuter trait passed when the larva is initialized
 		ADD_TRAIT(src, TRAIT_NEUTERED, INNATE_TRAIT)
-	var/datum/action/cooldown/alien/larva_evolve/evolution = new(src, Neuter)
-	evolution.Grant(src)
+		var/datum/action/cooldown/alien/neutered_larva_evolve/evolution = new(src)
+		evolution.Grant(src)
+	else
+		var/datum/action/cooldown/alien/larva_evolve/evolution = new(src)
+		evolution.Grant(src)
 	var/datum/action/cooldown/alien/hide/hide = new(src)
 	hide.Grant(src)
 	return ..()
