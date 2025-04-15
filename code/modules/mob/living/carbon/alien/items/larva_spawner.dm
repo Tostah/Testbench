@@ -1,8 +1,8 @@
 /obj/item/neutered_larva_spawner
 	name = "syndicate larva cage"
-	desc = "The fearsome xenomorph, contained, neutered, and bred to treat the first person it sees \
-			as its queen. This larva is not capable of turning into a Drone."
-	icon = 'code\modules\mob\living\carbon\alien\special\items.dmi
+	desc = "The fearsome xenomorph, contained and bred to treat the first person it sees \
+			as its queen. Because of exposure to radiation, this larva is not capable of turning into a Drone, or evolving into a Queen."
+	icon = 'monkestation/code/modules/antagonists/borers/icons/items.dmi' //TODO update with larva icon
 	icon_state = "cage"
 	/// Used to animate the cage opening when you use the borer spawner, and closing if it fails to spawn a borer. Also midly against spam
 	var/opened = FALSE
@@ -17,7 +17,7 @@
 
 /obj/item/neutered_larva_spawner/update_overlays()
 	. = ..()
-	. += "larva"
+	. += "borer"
 	if(opened)
 		. += "doors_open"
 	else
