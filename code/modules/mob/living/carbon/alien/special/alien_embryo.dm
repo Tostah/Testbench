@@ -85,7 +85,7 @@
 			return
 		attempt_grow()
 
-///Attempt to burst an alien outside of the host, getting a ghost to play as the fxeno.
+///Attempt to burst an alien outside of the host, getting a ghost to play as the xeno.
 /obj/item/organ/internal/body_egg/alien_embryo/proc/attempt_grow() // monkestation edit: remove gib_on_success, as we don't gib the victim anymore
 	if(!owner || bursting)
 		return
