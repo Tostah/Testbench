@@ -33,9 +33,9 @@
 
 
 //This is fine right now, if we're adding organ specific damage this needs to be updated
-/mob/living/carbon/alien/larva/Initialize(mapload, Neuter)
-	if(Neuter) // Monkeystation EDIT. A check for the neuter trait passed when the larva is initialized
-		ADD_TRAIT(src, TRAIT_NEUTERED, INNATE_TRAIT)
+/mob/living/carbon/alien/larva/Initialize(mapload)
+	// Monkeystation EDIT. A check for the neuter trait passed when the larva is initialized
+	if(HAS_TRAIT(src, TRAIT_NEUTERED))
 		var/datum/action/cooldown/alien/neutered_larva_evolve/evolution = new(src)
 		evolution.Grant(src)
 	else

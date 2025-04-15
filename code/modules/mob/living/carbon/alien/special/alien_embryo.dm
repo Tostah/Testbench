@@ -11,6 +11,7 @@
 	var/bursting = FALSE
 	/// How long does it take to advance one stage? Growth time * 5 = how long till we make a Larva!
 	var/growth_time = 60 SECONDS
+	var/Neuter = FALSE
 
 /obj/item/organ/internal/body_egg/alien_embryo/Initialize(mapload)
 	. = ..()
@@ -115,9 +116,11 @@
 	var/mutable_appearance/overlay = mutable_appearance('icons/mob/nonhuman-player/alien.dmi', "burst_lie")
 	owner.add_overlay(overlay)
 	addtimer(CALLBACK(owner, TYPE_PROC_REF(/atom, cut_overlay), overlay), 0.7 SECONDS) // monkestation edit: just use a timer to always ensure the overlay is removed
-
 	var/atom/xeno_loc = get_turf(owner)
-	var/mob/living/carbon/alien/larva/new_xeno = new(xeno_loc, FALSE) //Monkeystation edit;
+	var/mob/living/carbon/alien/larva/new_xeno
+	if(Neuter)
+		ADD_TRAIT(new_xeno, TRAIT_NEUTERED, INNATE_TRAIT)
+	new_xeno = new(xeno_loc) //Monkeystation edit;
 	new_xeno.key = ghost.key
 	SEND_SOUND(new_xeno, sound('sound/voice/hiss5.ogg',0,0,0,100)) //To get the player's attention
 	new_xeno.add_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_IMMOBILIZED, TRAIT_NO_TRANSFORM), type) //so we don't move during the bursting animation
@@ -176,6 +179,7 @@ Des: Removes all images from the mob infected by this embryo
 	var/bursting = FALSE
 	/// How long does it take to advance one stage? Growth time * 5 = how long till we make a Larva!
 	var/growth_time = 60 SECONDS
+	var/Neuter = TRUE
 
 /obj/item/organ/internal/body_egg/neutered_alien_embryo/Initialize(mapload)
 	. = ..()
@@ -282,7 +286,10 @@ Des: Removes all images from the mob infected by this embryo
 	addtimer(CALLBACK(owner, TYPE_PROC_REF(/atom, cut_overlay), overlay), 0.7 SECONDS) // monkestation edit: just use a timer to always ensure the overlay is removed
 
 	var/atom/xeno_loc = get_turf(owner)
-	var/mob/living/carbon/alien/larva/new_xeno = new(xeno_loc, TRUE) //Here is the key difference between this embryo and a normal embro. A binary value.
+	var/mob/living/carbon/alien/larva/new_xeno
+	if(Neuter)
+		ADD_TRAIT(new_xeno, TRAIT_NEUTERED, INNATE_TRAIT)
+	new_xeno = new(xeno_loc) //Monkeystation edit;
 	new_xeno.key = ghost.key
 	SEND_SOUND(new_xeno, sound('sound/voice/hiss5.ogg',0,0,0,100)) //To get the player's attention
 	new_xeno.add_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_IMMOBILIZED, TRAIT_NO_TRANSFORM), type) //so we don't move during the bursting animation
