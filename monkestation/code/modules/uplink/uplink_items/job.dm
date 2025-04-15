@@ -171,11 +171,8 @@
 
 /datum/uplink_item/role_restricted/Xenomorph_Friend
 	name = "Xenomorph Domestication Kit"
-	desc = "Through years of research (And glorious combat) we have discovered how to domesticate the fearsome xenomorph. \
-			First, implant the hive node into yourself using the provided autosurgeon. Next, place the embryo into the autosurgeon \
-			and implant a living victim with it. You can use the provided monkey cube, just add water and it will grow into a full monkey.  \
-			Wait about 5 minutes, and the larva will burst from the monkey. The larva instantly imprints on the first person it sees, considering them the queen. \
-			Make sure this is you. "
+	desc = "Contains a neutered xenomorph larva and a hive node autosurgeon wich you must implant into yourself. \
+			Use key :a to communicate telepathically with your xenomorph."
 	cost = 10
 	item = /obj/item/storage/box/syndie_kit/Xenomorph_Friend
 	restricted_roles = list(JOB_GENETICIST, JOB_SCIENTIST, JOB_RESEARCH_DIRECTOR, JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_VIROLOGIST)

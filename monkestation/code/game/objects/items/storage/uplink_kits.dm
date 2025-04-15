@@ -237,7 +237,7 @@
 	new /obj/item/autosurgeon/syndicate/cyberlink_syndicate(src)
 	new /obj/item/autosurgeon/organ/syndicate/deepvien(src)
 	new /obj/item/autosurgeon/organ/syndicate/deepvien/l(src)
-  
+
 /obj/item/storage/box/syndie_kit/xray
 	name = "X-Ray Mutation Kit"
 	desc = "A box with a singular syndicate-grade X-Ray mutator and 3 oculine medipens."
@@ -257,8 +257,8 @@
 		new /obj/item/reagent_containers/hypospray/medipen/deforest/occuisate(src)
 
 /obj/item/storage/box/syndie_kit/Xenomorph_Friend
-	name = "Xenomorph Domestication Kit"
-	desc = "Contains everything you'll need to create and control the perfect organism"
+	name = "Xenomorph Reinforcements"
+	desc = "Humanities greatest enemy, domesticated."
 
 /obj/item/storage/box/syndie_kit/Xenomorph_Friend/PopulateContents()
 	generate_items_inside(list(

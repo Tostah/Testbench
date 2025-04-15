@@ -12,7 +12,6 @@
 	health = 25
 	hardcrit_threshold = HEALTH_THRESHOLD_CRIT
 
-
 	rotate_on_lying = FALSE
 
 	default_num_legs = 1
@@ -30,11 +29,11 @@
 	var/time_of_birth
 
 
-
 //This is fine right now, if we're adding organ specific damage this needs to be updated
 /mob/living/carbon/alien/larva/Initialize(mapload, Neuter)
-	// Monkeystation EDIT. A check for the neuter trait passed when the larva is initialized
+	// Monkeystation EDIT. If a larva is neutered or not it gets a different ability and trait
 	if(Neuter)
+		ADD_TRAIT(src, TRAIT_NEUTERED, INNATE_TRAIT)
 		var/datum/action/cooldown/alien/neutered_larva_evolve/evolution = new(src)
 		evolution.Grant(src)
 	else
