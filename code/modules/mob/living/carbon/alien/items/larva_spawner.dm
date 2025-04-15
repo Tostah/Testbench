@@ -1,7 +1,7 @@
 /obj/item/neutered_larva_spawner
 	name = "syndicate larva cage"
-	desc = "The fearsome xenomorph, contained and bred to treat the first person it sees \
-			as its queen. Because of exposure to radiation, this larva is not capable of turning into a Drone, or evolving into a Queen."
+	desc = "The fearsome xenomorph, contained and modified to treat the first person it sees \
+			as its queen. Because of its extensive modifications, this larva is not capable of turning into a Drone, or evolving into a Queen."
 	icon = 'monkestation/code/modules/antagonists/borers/icons/items.dmi' //TODO update with larva icon
 	icon_state = "cage"
 	/// Used to animate the cage opening when you use the borer spawner, and closing if it fails to spawn a borer. Also midly against spam
@@ -89,9 +89,9 @@
 		action = NOTIFY_ORBIT,
 		header = "Someone just got a new friend!"
 	)
-	message_admins("[ADMIN_LOOKUPFLW(new_mob)] has been made into a borer via a traitor item used by [user].")
-	log_game("[key_name(new_mob)] was spawned as a borer by [key_name(user)].")
-	visible_message("A borer wriggles out of the [src]!")
+	message_admins("[ADMIN_LOOKUPFLW(new_mob)] has been made into a larva via a traitor item used by [user].")
+	log_game("[key_name(new_mob)] was spawned as a larva by [key_name(user)].")
+	visible_message("A larva wriggles out of the [src]!")
 
 	var/obj/item/cortical_cage/empty_cage = new(drop_location())
 	var/user_held = user.get_held_index_of_item(src)
