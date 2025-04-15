@@ -28,14 +28,13 @@
 	var/amount_grown = 0
 	var/max_grown = 100
 	var/time_of_birth
-	var/Neuter
 
 
 
 //This is fine right now, if we're adding organ specific damage this needs to be updated
-/mob/living/carbon/alien/larva/Initialize(mapload)
+/mob/living/carbon/alien/larva/Initialize(mapload, Neuter)
 	// Monkeystation EDIT. A check for the neuter trait passed when the larva is initialized
-	if(HAS_TRAIT(src, TRAIT_NEUTERED))
+	if(Neuter)
 		var/datum/action/cooldown/alien/neutered_larva_evolve/evolution = new(src)
 		evolution.Grant(src)
 	else

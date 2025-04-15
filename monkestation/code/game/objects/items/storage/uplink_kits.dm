@@ -244,9 +244,8 @@
 
 /obj/item/storage/box/syndie_kit/Xenomorph_Friend/PopulateContents()
 	generate_items_inside(list(
-		new /obj/item/organ/internal/body_egg/neutered_alien_embryo = 1,
+		/obj/item/neutered_larva_spawner = 1,
 		/obj/item/autosurgeon/organ/syndicate/hivenode = 1,
-		/obj/item/food/monkeycube = 1,
 	), src)
 
 #undef KIT_ITEM_CATEGORY_SUPPORT
