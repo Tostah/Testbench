@@ -1,4 +1,4 @@
-/datum/action/cooldown/alien/larva_evolve/Activate(atom/target, Neuter)
+/datum/action/cooldown/alien/larva_evolve/Activate(atom/target)
 	var/static/list/caste_options
 	if(!caste_options)
 		caste_options = list()
