@@ -2,7 +2,7 @@
 	name = "syndicate larva cage"
 	desc = "The fearsome xenomorph, contained and modified to treat the first person it sees \
 			as its queen. Because of its extensive modifications, this larva is not capable of turning into a Drone, or evolving into a Queen."
-	icon = 'monkestation/code/modules/antagonists/borers/icons/items.dmi' //TODO update with larva icon
+	icon = 'monkestation/code/modules/antagonists/borers/icons/items.dmi'
 	icon_state = "cage"
 	/// Used to animate the cage opening when you use the borer spawner, and closing if it fails to spawn a borer. Also midly against spam
 	var/opened = FALSE
@@ -17,7 +17,7 @@
 
 /obj/item/neutered_larva_spawner/update_overlays()
 	. = ..()
-	. += "borer"
+	. += "larva"
 	if(opened)
 		. += "doors_open"
 	else
@@ -48,10 +48,12 @@
 	INVOKE_ASYNC(src, PROC_REF(do_wriggler_messages)) // give them something to look at whilst we poll the ghosts
 	update_appearance()
 	var/list/candidates = SSpolling.poll_ghost_candidates(
+		"Do you want to play as a neutered alien larva?",
 		role = ROLE_ALIEN,
 		poll_time = polling_time,
-		ignore_category = POLL_IGNORE_ALIEN_LARVA,
+		check_jobban = ROLE_ALIEN,
 		alert_pic = /mob/living/carbon/alien/larva,
+		role_name_text = "neutered alien larva"
 	)
 	if(QDELETED(src)) // prevent shenanigans with refunds
 		return
