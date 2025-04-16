@@ -67,7 +67,7 @@
 	var/mob/dead/observer/picked_candidate = pick(candidates)
 
 	var/mob/living/carbon/alien/larva/new_mob = new(drop_location(), TRUE)
-	new_mob.ckey = picked_candidate.ckey
+	new_mob.PossessByPlayer(picked_candidate.ckey)
 
 	var/datum/antagonist/xeno/xeno_antagonist_datum = new
 
