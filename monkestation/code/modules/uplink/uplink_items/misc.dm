@@ -85,9 +85,3 @@
 	desc = "A Xenomorph hive node. When implanted, allows connection to any Xenomorphs in nearby psionic networks."
 	cost = 5 //similar price to binary translator
 	item = /obj/item/autosurgeon/syndicate/organ/hivenode
-
-/datum/uplink_item/device_tools/autosurgeon
-	name = "Syndicate Autosurgeon"
-	desc = "An (empty) reusable Syndicate Autosurgeon"
-	cost = 2
-	item = /obj/item/autosurgeon/organ/syndicate
