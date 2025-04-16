@@ -83,7 +83,9 @@
 	xeno_antagonist_datum.objectives += protect_objective
 	xeno_antagonist_datum.objectives += listen_objective
 
+	new_mob.mind.remove_all_antag_datums() //removes the default xeno antag datum
 	new_mob.mind.add_antag_datum(xeno_antagonist_datum)
+
 
 	notify_ghosts(
 		"[new_mob] has been chosen from the ghost pool!",

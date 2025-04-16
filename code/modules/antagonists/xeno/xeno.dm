@@ -160,7 +160,7 @@
 //XENO
 /mob/living/carbon/alien/mind_initialize()
 	..()
-	if(!mind.has_antag_datum(/datum/antagonist/xeno) && !HAS_TRAIT(src, TRAIT_NEUTERED))
+	if(!mind.has_antag_datum(/datum/antagonist/xeno))
 		if(SScommunications.xenomorph_egg_delivered && istype(get_area(src), SScommunications.captivity_area))
 			mind.add_antag_datum(/datum/antagonist/xeno/captive)
 		else
