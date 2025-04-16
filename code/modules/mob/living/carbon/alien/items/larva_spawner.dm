@@ -69,7 +69,7 @@
 	var/mob/living/carbon/alien/larva/new_mob = new(drop_location(), TRUE)
 	new_mob.PossessByPlayer(picked_candidate.ckey)
 
-	var/datum/antagonist/xeno/xeno_antagonist_datum = new
+	var/datum/antagonist/xeno/neutered/xeno_antagonist_datum = new
 
 	var/datum/objective/protect/protect_objective = new
 	var/datum/objective/custom/listen_objective = new
