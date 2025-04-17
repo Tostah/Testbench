@@ -170,7 +170,7 @@
 	restricted_roles = list(JOB_GENETICIST)
 
 /datum/uplink_item/role_restricted/Xenomorph_Friend
-	name = "Xenomorph Domestication Kit"
+	name = "Xenomorph Reinforcements"
 	desc = "Contains a neutered xenomorph larva and a hive node autosurgeon wich you must implant into yourself. \
 			Use key :a to communicate telepathically with your xenomorph."
 	cost = 10
