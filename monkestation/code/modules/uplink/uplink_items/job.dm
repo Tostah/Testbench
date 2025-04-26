@@ -168,12 +168,15 @@
 	surplus = 0
 	item = /obj/item/chromosome/energy
 	restricted_roles = list(JOB_GENETICIST)
-
+/*
 /datum/uplink_item/role_restricted/Xenomorph_Friend
 	name = "Xenomorph Reinforcements"
 	desc = "Contains a neutered xenomorph larva and a hive node autosurgeon wich you must implant into yourself. \
 			Use key :a to communicate telepathically with your xenomorph."
 	cost = 10
-	item = /obj/item/storage/box/syndie_kit/Xenomorph_Friend
+	item = /obj/item/worm_spawner(name = "syndicate xenomorph larva cage",
+			desc = "aaaa",
+			worm = "larva")
 	restricted_roles = list(JOB_GENETICIST, JOB_SCIENTIST, JOB_RESEARCH_DIRECTOR, JOB_MEDICAL_DOCTOR, JOB_CHIEF_MEDICAL_OFFICER, JOB_VIROLOGIST)
 
+*/
