@@ -6,7 +6,7 @@
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
 	item = /obj/item/syndie_glue
 	cost = 2
-/*
+
 /datum/uplink_item/device_tools/neutered_borer_egg
 	name = "Neutered borer egg"
 	desc = "A borer egg specifically bred to aid operatives. \
@@ -14,14 +14,11 @@
 			Unfortunately due to extreme radiation exposure, they cannot reproduce. \
 			It was put into a cage for easy tranportation"
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
-	item = /obj/item/worm_spawner(name = "syndicate cortical borer cage",
-			desc = "The opposite of a harmless cage that is intended to capture cortical borer, \
-			as this one contains a borer trained to assist anyone who it first sees in completing their goals.",
-			worm = "borer")
+	item = /obj/item/neutered_borer_spawner
 	cost = 20
 	surplus = 40
 	refundable = TRUE
-*/
+
 /datum/uplink_item/stealthy_tools/chameleonheadsetdeluxe
 	name = "Advanced Chameleon Headset"
 	desc = "A premium model Chameleon Headset. All the features you love of the original, but now with flashbang \

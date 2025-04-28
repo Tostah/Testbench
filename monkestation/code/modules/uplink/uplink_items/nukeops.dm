@@ -71,8 +71,8 @@
 
 /datum/uplink_item/reinforcements/Xenomorph_Friend
 	name = "Xenomorph Reinforcements"
-	desc = "Contains a neutered xenomorph larva and a hive node autosurgeon wich you must implant into yourself. \
-			Use key :a to communicate telepathically with your xenomorph."
-	cost = 10
+	desc = "Contains a neutered xenomorph larva and a hive node autosurgeon wich you must implant into yourself, \
+			allowing instantaneous telepathic communication with your new xenomorph."
+	cost = 30
 	item = /obj/item/storage/box/syndie_kit/Xenomorph_Friend
 	purchasable_from = UPLINK_NUKE_OPS
