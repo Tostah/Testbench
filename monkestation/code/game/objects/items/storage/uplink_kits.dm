@@ -263,7 +263,7 @@
 /obj/item/storage/box/syndie_kit/Xenomorph_Friend/PopulateContents()
 	generate_items_inside(list(
 		/obj/item/neutered_larva_spawner = 1,
-		/obj/item/autosurgeon/organ/syndicate/hivenode = 1,
+		/obj/item/autosurgeon/syndicate/organ/hivenode = 1,
 	), src)
 
 #undef KIT_ITEM_CATEGORY_SUPPORT
