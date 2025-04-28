@@ -12,7 +12,7 @@
 	var/delayed = FALSE
 	/// Dictates the poll time
 	var/polling_time = 10 SECONDS
-	var/worm = "borer" //borer by default, can be changed to 'larva' or expanded for additional worms
+	var/worm = "borer"
 
 /obj/item/neutered_borer_spawner/Initialize(mapload)
 	. = ..()
@@ -108,6 +108,7 @@
 		var/datum/antagonist/xeno/neutered/worm_antagonist_datum = new
 		worm_antagonist_datum.objectives += protect_objective
 		worm_antagonist_datum.objectives += listen_objective
+		new_mob.mind.remove_all_antag_datums() //the xeno larva needs all antag datums removed, to remove default xeno antag datum
 		new_mob.mind.add_antag_datum(worm_antagonist_datum)
 
 	var/obj/item/cortical_cage/empty_cage = new(drop_location())

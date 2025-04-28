@@ -69,7 +69,7 @@
 	purchasable_from = UPLINK_NUKE_OPS
 	illegal_tech = FALSE
 
-/datum/uplink_item/reinforcements/Xenomorph_Friend
+/datum/uplink_item/reinforcements/nukies_xenomorph_reinforcements
 	name = "Xenomorph Reinforcements"
 	desc = "Contains a neutered xenomorph larva and a hive node autosurgeon wich you must implant into yourself, \
 			allowing instantaneous telepathic communication with your new xenomorph."
