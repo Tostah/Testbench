@@ -51,6 +51,7 @@
 	INVOKE_ASYNC(src, PROC_REF(do_wriggler_messages)) // give them something to look at whilst we poll the ghosts
 	update_appearance()
 
+	var/datum/antagonist/worm_antagonist_datum
 	var/datum/objective/protect/protect_objective = new
 	var/datum/objective/custom/listen_objective = new
 
@@ -60,7 +61,7 @@
 	listen_objective.explanation_text = "Listen to any commands given by [user.name]"
 	listen_objective.completed = TRUE // its just an objective for flavor less-so than for greentext
 
-		//TWO POSSIBLE CHOICES. Cortical borer, or xeno larva.
+		//The wormy types
 	if(worm == "borer")
 	//spawn a borer
 		var/list/candidates = SSpolling.poll_ghost_candidates(
@@ -80,10 +81,7 @@
 		var/mob/dead/observer/picked_candidate = pick(candidates)
 		var/mob/living/basic/cortical_borer/neutered/new_mob = new(drop_location())
 		new_mob.PossessByPlayer(picked_candidate.ckey)
-		var/datum/antagonist/cortical_borer/worm_antagonist_datum = new
-		worm_antagonist_datum.objectives += protect_objective
-		worm_antagonist_datum.objectives += listen_objective
-		new_mob.mind.add_antag_datum(worm_antagonist_datum)
+		worm_antagonist_datum = new /datum/antagonist/cortical_borer
 
 	else // if worm == "larva"
 	//spawn a larva
@@ -95,7 +93,6 @@
 		)
 		if(QDELETED(src)) // prevent shenanigans with refunds
 			return
-
 		if(!LAZYLEN(candidates))
 			opened = FALSE
 			to_chat(user, "Yet the [worm] after looking at you quickly retreats back into their cage, visibly scared. Perhaps try later?")
@@ -105,11 +102,14 @@
 		var/mob/dead/observer/picked_candidate = pick(candidates)
 		var/mob/living/carbon/alien/larva/new_mob = new(drop_location(), TRUE)
 		new_mob.PossessByPlayer(picked_candidate.ckey)
-		var/datum/antagonist/xeno/neutered/worm_antagonist_datum = new
-		worm_antagonist_datum.objectives += protect_objective
-		worm_antagonist_datum.objectives += listen_objective
-		new_mob.mind.remove_all_antag_datums() //the xeno larva needs all antag datums removed, to remove default xeno antag datum
-		new_mob.mind.add_antag_datum(worm_antagonist_datum)
+		worm_antagonist_datum = new /datum/antagonist/xeno/neutered
+	// else if worm == "yo mama"
+
+	//all worms get the same objectives
+	worm_antagonist_datum.objectives += protect_objective
+	worm_antagonist_datum.objectives += listen_objective
+	new_mob.mind.remove_all_antag_datums()
+	new_mob.mind.add_antag_datum(worm_antagonist_datum)
 
 	var/obj/item/cortical_cage/empty_cage = new(drop_location())
 	var/user_held = user.get_held_index_of_item(src)
