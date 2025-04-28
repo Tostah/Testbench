@@ -256,11 +256,11 @@
 	for(var/i in 1 to 3)
 		new /obj/item/reagent_containers/hypospray/medipen/deforest/occuisate(src)
 
-/obj/item/storage/box/syndie_kit/Xenomorph_Friend
+/obj/item/storage/box/syndie_kit/xenomorph_friend
 	name = "Xenomorph Reinforcements"
 	desc = "Humanities greatest enemy, domesticated."
 
-/obj/item/storage/box/syndie_kit/Xenomorph_Friend/PopulateContents()
+/obj/item/storage/box/syndie_kit/xenomorph_friend/PopulateContents()
 	generate_items_inside(list(
 		/obj/item/neutered_larva_spawner = 1,
 		/obj/item/autosurgeon/syndicate/organ/hivenode = 1,
