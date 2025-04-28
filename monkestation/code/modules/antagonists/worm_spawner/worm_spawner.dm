@@ -4,7 +4,7 @@
 	name = "syndicate cortical borer cage"
 	desc = "The opposite of a harmless cage that is intended to capture cortical borer, \
 			as this one contains a borer trained to assist anyone who it first sees in completing their goals."
-	icon = 'monkestation\code\modules\antagonists\worm_spawner\icons.dmi'
+	icon = 'monkestation/code/modules/antagonists/borers/icons/items.dmi'
 	icon_state = "cage"
 	/// Used to animate the cage opening when you use the borer spawner, and closing if it fails to spawn a borer. Also midly against spam
 	var/opened = FALSE
@@ -54,7 +54,6 @@
 	var/datum/antagonist/worm_antagonist_datum
 	var/datum/objective/protect/protect_objective = new
 	var/datum/objective/custom/listen_objective = new
-
 	protect_objective.target = user.mind
 	protect_objective.update_explanation_text()
 
@@ -62,6 +61,7 @@
 	listen_objective.completed = TRUE // its just an objective for flavor less-so than for greentext
 
 		//The wormy types
+	var/mob/living/new_mob
 	if(worm == "borer")
 	//spawn a borer
 		var/list/candidates = SSpolling.poll_ghost_candidates(
@@ -79,7 +79,7 @@
 			update_appearance()
 			return
 		var/mob/dead/observer/picked_candidate = pick(candidates)
-		var/mob/living/basic/cortical_borer/neutered/new_mob = new(drop_location())
+		new_mob = new /mob/living/basic/cortical_borer/neutered(drop_location())
 		new_mob.PossessByPlayer(picked_candidate.ckey)
 		worm_antagonist_datum = new /datum/antagonist/cortical_borer
 
@@ -100,7 +100,7 @@
 			update_appearance()
 			return
 		var/mob/dead/observer/picked_candidate = pick(candidates)
-		var/mob/living/carbon/alien/larva/new_mob = new(drop_location(), TRUE)
+		new_mob = new /mob/living/carbon/alien/larva(drop_location(), TRUE)
 		new_mob.PossessByPlayer(picked_candidate.ckey)
 		worm_antagonist_datum = new /datum/antagonist/xeno/neutered
 
