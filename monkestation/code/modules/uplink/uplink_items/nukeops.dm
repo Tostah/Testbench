@@ -74,5 +74,5 @@
 	desc = "Contains a neutered xenomorph larva and a hive node autosurgeon wich you must implant into yourself, \
 			allowing instantaneous telepathic communication with your new xenomorph."
 	cost = 30
-	item = /obj/item/storage/box/syndie_kit/Xenomorph_Friend
+	item = /obj/item/storage/box/syndie_kit/xenomorph_friend
 	purchasable_from = UPLINK_NUKE_OPS
