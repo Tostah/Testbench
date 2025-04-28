@@ -4,7 +4,7 @@
 	name = "syndicate cortical borer cage"
 	desc = "The opposite of a harmless cage that is intended to capture cortical borer, \
 			as this one contains a borer trained to assist anyone who it first sees in completing their goals."
-	icon = 'monkestation/code/modules/antagonists/borers/icons/items.dmi'
+	icon = 'monkestation\code\modules\antagonists\worm_spawner\icons.dmi'
 	icon_state = "cage"
 	/// Used to animate the cage opening when you use the borer spawner, and closing if it fails to spawn a borer. Also midly against spam
 	var/opened = FALSE
@@ -103,7 +103,6 @@
 		var/mob/living/carbon/alien/larva/new_mob = new(drop_location(), TRUE)
 		new_mob.PossessByPlayer(picked_candidate.ckey)
 		worm_antagonist_datum = new /datum/antagonist/xeno/neutered
-	// else if worm == "yo mama"
 
 	//all worms get the same objectives
 	worm_antagonist_datum.objectives += protect_objective
