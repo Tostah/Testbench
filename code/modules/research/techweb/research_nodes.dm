@@ -148,16 +148,3 @@
 		"bag_holding",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
-
-/datum/techweb_node/experimental_implanter
-	id = "experimental_implanter"
-	display_name = "Xenomorph Domestication Technology"
-	description = "Through years of glorious combat and equally glorious research, we have discovered how to forcibly tame \
-					the fearsome xenomorph."
-	prereq_ids = list("exp_surgery", "xenoorgan_bio")
-	design_ids = list(
-		"experimental_implanter"
-	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_4_POINTS)
-	required_experiments = list()
-	discount_experiments = list(/datum/experiment/dissection/xenomorph = TECHWEB_TIER_3_POINTS)
