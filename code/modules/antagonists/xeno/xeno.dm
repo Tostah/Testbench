@@ -159,11 +159,14 @@
 //XENO
 /mob/living/carbon/alien/mind_initialize()
 	..()
+	if (HAS_TRAIT(src, TRAIT_NEUTERED)) //skip antagonist assignment if neutered
+		return
 	if(!mind.has_antag_datum(/datum/antagonist/xeno))
 		if(SScommunications.xenomorph_egg_delivered && istype(get_area(src), SScommunications.captivity_area))
 			mind.add_antag_datum(/datum/antagonist/xeno/captive)
 		else
 			mind.add_antag_datum(/datum/antagonist/xeno)
+
 		mind.set_assigned_role(SSjob.GetJobType(/datum/job/xenomorph))
 		mind.special_role = ROLE_ALIEN
 

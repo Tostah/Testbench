@@ -50,7 +50,10 @@
 		sleep(delayed)
 	INVOKE_ASYNC(src, PROC_REF(do_wriggler_messages)) // give them something to look at whilst we poll the ghosts
 	update_appearance()
-
+	//handles the spawning, canididate selecting and assigning of objectives for the new worm
+	var/mob/living/new_mob
+	var/mob/dead/observer/picked_candidate
+	var/list/candidates
 	var/datum/antagonist/worm_antagonist_datum
 	var/datum/objective/protect/protect_objective = new
 	var/datum/objective/custom/listen_objective = new
@@ -61,10 +64,9 @@
 	listen_objective.completed = TRUE // its just an objective for flavor less-so than for greentext
 
 		//The wormy types
-	var/mob/living/new_mob
 	if(worm == "borer")
 	//spawn a borer
-		var/list/candidates = SSpolling.poll_ghost_candidates(
+		candidates = SSpolling.poll_ghost_candidates(
 			role = ROLE_CORTICAL_BORER,
 			poll_time = polling_time,
 			ignore_category = POLL_IGNORE_CORTICAL_BORER,
@@ -78,14 +80,12 @@
 			playsound(src, 'sound/machines/boltsup.ogg', 30, TRUE)
 			update_appearance()
 			return
-		var/mob/dead/observer/picked_candidate = pick(candidates)
 		new_mob = new /mob/living/basic/cortical_borer/neutered(drop_location())
-		new_mob.PossessByPlayer(picked_candidate.ckey)
 		worm_antagonist_datum = new /datum/antagonist/cortical_borer
 
 	else // if worm == "larva"
 	//spawn a larva
-		var/list/candidates = SSpolling.poll_ghost_candidates(
+		candidates = SSpolling.poll_ghost_candidates(
 			role = ROLE_ALIEN,
 			poll_time = polling_time,
 			ignore_category = POLL_IGNORE_ALIEN_LARVA,
@@ -99,10 +99,11 @@
 			playsound(src, 'sound/machines/boltsup.ogg', 30, TRUE)
 			update_appearance()
 			return
-		var/mob/dead/observer/picked_candidate = pick(candidates)
 		new_mob = new /mob/living/carbon/alien/larva(drop_location(), TRUE)
-		new_mob.PossessByPlayer(picked_candidate.ckey)
 		worm_antagonist_datum = new /datum/antagonist/xeno/neutered
+	//else new_worm
+	picked_candidate = pick(candidates)
+	new_mob.PossessByPlayer(picked_candidate.ckey)
 
 	//all worms get the same objectives
 	worm_antagonist_datum.objectives += protect_objective
