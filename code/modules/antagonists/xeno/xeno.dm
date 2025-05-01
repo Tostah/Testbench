@@ -56,7 +56,6 @@
 /datum/antagonist/xeno/neutered
 	name = "\improper Neutered Xenomorph"
 
-
 /datum/antagonist/xeno/captive
 	name = "\improper Captive Xenomorph"
 	///Our associated antagonist team for captive xenomorphs
