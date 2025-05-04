@@ -27,4 +27,12 @@
 			xeno_datum.objectives += listen_objective
 			M.mind.add_antag_datum(xeno_datum)
 
-//some function to use a hive node to turn the contains_node variable true
+/obj/item/assembly/flash/xenomorph/attackby(obj/item/organ/internal/alien/hivenode/H, mob/living/user)
+	if(contains_node)
+		to_chat(user, "The hijacker already contains a hive node")
+	else
+		contains_node = TRUE
+		qdel(H)
+		to_chat(user, "You sucessfully insert the hive node into the hijacker")
+	return
+
