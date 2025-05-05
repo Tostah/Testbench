@@ -6,14 +6,10 @@
 /mob/living/carbon/alien/larva/updatePlasmaDisplay()
 	return
 
-/mob/living/carbon/alien/proc/findQueen(mob) //Allows anything to be the 'queen'
-	var/mob/queen
+/mob/living/carbon/alien/proc/findQueen()
 	if(hud_used)
 		hud_used.alien_queen_finder.cut_overlays()
-		if(!mob)
-			queen = get_alien_type(/mob/living/carbon/alien/adult/royal/queen) //the normal queen is the default
-		else
-			queen = mob
+		var/mob/queen = get_alien_type(/mob/living/carbon/alien/adult/royal/queen)
 		if(!queen)
 			return
 		var/turf/Q = get_turf(queen)
