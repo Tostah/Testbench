@@ -33,16 +33,6 @@
 			to_chat(user, "You sucessfully insert the hive node into the hijacker")
 			name = "Hivenode Hijacker (Loaded)"
 			desc = "An experimental flash device used to hijack hiveminds and brainwash Xenmorphs."
-	/*
-	else if(istype(H, /obj/item/screwdriver)) //if its a screwdriver
-		if(contains_node)
-			update_icon(ALL, TRUE)
-			contains_node = FALSE //remove the node
-			to_chat(user, "You sucessfully remove the hive node")
-			name = "Hivenode Hijacker (Empty)"
-			desc = "Experimental flash device with a slot for a xenomorph hive node."
-			new /obj/item/organ/internal/alien/hivenode(user.loc)
-	*/
 	return
 
 /obj/item/assembly/flash/xenomorph/screwdriver_act(mob/living/user, obj/item/I)
