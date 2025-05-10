@@ -79,7 +79,7 @@ SUBSYSTEM_DEF(research)
 
 	var/list/slime_core_prices = list()
 
-	var/xeno_count = 1
+	var/xeno_count
 
 	var/static/list/default_core_prices = list(
 		SLIME_VALUE_TIER_1,
