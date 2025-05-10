@@ -118,6 +118,7 @@ SUBSYSTEM_DEF(research)
 		for(var/obj/machinery/rnd/server/miner as anything in techweb_list.techweb_servers)
 			if(miner.working)
 				bitcoins = single_server_income.Copy()
+				break //Just need one to work.
 		if (techweb_list.nanite_bonus)
 			bitcoins[TECHWEB_POINT_TYPE_GENERIC] += techweb_list.nanite_bonus
 
