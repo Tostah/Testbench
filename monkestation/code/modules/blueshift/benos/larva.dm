@@ -4,6 +4,7 @@
 	var/static/list/caste_options
 	if(!caste_options)
 		caste_options = list()
+
 		// This --can probably-- (will not) be genericized in the future.
 		make_xeno_caste_entry(
 		caste_name = "Runner",
@@ -13,6 +14,7 @@
 		Eventually, runners can evolve onwards into the fearsome ravager, should the hive permit it."),
 		caste_options = caste_options,
 		)
+
 		make_xeno_caste_entry(
 		caste_name = "Sentinel",
 		caste_image = image(icon = 'monkestation/code/modules/blueshift/icons/xeno_actions.dmi', icon_state = "preview_sentinel"),
@@ -45,7 +47,9 @@
 	var/alien_caste = show_radial_menu(owner, owner, caste_options, radius = 38, require_near = TRUE, tooltips = TRUE)
 	if(QDELETED(src) || QDELETED(owner) || !IsAvailable(feedback = TRUE) || isnull(alien_caste))
 		return
+
 	spawn_new_xeno(alien_caste)
+
 	return TRUE
 
 /// Generates a new entry to the
