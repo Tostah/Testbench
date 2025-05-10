@@ -119,6 +119,7 @@ SUBSYSTEM_DEF(research)
 			if(miner.working)
 				bitcoins = single_server_income.Copy()
 				break //Just need one to work.
+
 		if (techweb_list.nanite_bonus)
 			bitcoins[TECHWEB_POINT_TYPE_GENERIC] += techweb_list.nanite_bonus
 
