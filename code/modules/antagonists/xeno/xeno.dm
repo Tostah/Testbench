@@ -88,7 +88,7 @@
 	explanation_text = "Escape from captivity."
 
 /datum/objective/escape_captivity/check_completion()
-	if(!istype(get_area(owner), SScommunications.captivity_area))
+	if(!istype(get_area(owner), /area/station/science/xenobiology))
 		return TRUE
 
 /datum/objective/advance_hive
@@ -147,7 +147,7 @@
 	if(!captive_alien || captive_alien.stat == DEAD)
 		return CAPTIVE_XENO_DEAD
 
-	if(istype(get_area(captive_alien), SScommunications.captivity_area))
+	if(istype(get_area(captive_alien), /area/station/science/xenobiology))
 		return CAPTIVE_XENO_FAIL
 
 	return CAPTIVE_XENO_PASS
@@ -156,7 +156,7 @@
 /mob/living/carbon/alien/mind_initialize()
 	..()
 	if(!mind.has_antag_datum(/datum/antagonist/xeno))
-		if(SScommunications.xenomorph_egg_delivered && istype(get_area(src), SScommunications.captivity_area))
+		if(istype(get_area(src), /area/station/science/xenobiology)) //ANY XENO which is born in the captive area (xenobiology) is considered captive
 			mind.add_antag_datum(/datum/antagonist/xeno/captive)
 		else
 			mind.add_antag_datum(/datum/antagonist/xeno)

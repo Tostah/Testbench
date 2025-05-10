@@ -25,7 +25,6 @@ SUBSYSTEM_DEF(research)
 	var/list/invalid_node_ids = list()
 	///associative id = error message
 	var/list/invalid_node_boost = list()
-
 	///associative id = TRUE
 	var/list/techweb_nodes_starting = list()
 	///category name = list(node.id = TRUE)
@@ -38,6 +37,7 @@ SUBSYSTEM_DEF(research)
 	var/list/techweb_nodes_experimental = list()
 	///path = list(point type = value)
 	var/list/techweb_point_items = list(
+
 	/obj/item/assembly/signaler/anomaly = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_4_POINTS)
 	)
 	var/list/errored_datums = list()
@@ -79,6 +79,8 @@ SUBSYSTEM_DEF(research)
 
 	var/list/slime_core_prices = list()
 
+	var/xeno_count = 1
+
 	var/static/list/default_core_prices = list(
 		SLIME_VALUE_TIER_1,
 		SLIME_VALUE_TIER_2,
@@ -106,15 +108,16 @@ SUBSYSTEM_DEF(research)
 		if(!techweb_list.should_generate_points)
 			continue
 		var/list/bitcoins = list()
-		var/captive_xenos = 1
-		for(var/datum/antagonist/xeno/captive/captive_xeno in GLOB.antagonists)
-			var/datum/team/xeno/captive/captive_team
-			if(captive_team.check_captivity(captive_xeno) == "captive_xeno_failed") //xeno still within captivity area
-				captive_xenos += 1
+		var/datum/team/xeno/captive/captive_team = locate(/datum/team/xeno/captive) in GLOB.antagonist_teams
+		if(captive_team) // if there are captive xenos there will be a captive team which contains all the captive xenos
+			xeno_count = 1 //start off with 1 as the base so having 1 xeno produces 2 research per second
+			for(var/datum/mind/alien_mind in captive_team.members)
+				if(captive_team.check_captivity(alien_mind.current) == "captive_xeno_failed") //if the xeno in question is safely contained
+					xeno_count++
+				techweb_list.income_modifier = xeno_count
 		for(var/obj/machinery/rnd/server/miner as anything in techweb_list.techweb_servers)
 			if(miner.working)
-				bitcoins = single_server_income.Copy() * captive_xenos
-
+				bitcoins = single_server_income.Copy()
 		if (techweb_list.nanite_bonus)
 			bitcoins[TECHWEB_POINT_TYPE_GENERIC] += techweb_list.nanite_bonus
 
