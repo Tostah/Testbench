@@ -78,6 +78,8 @@ SUBSYSTEM_DEF(research)
 	var/list/scientific_partners = list()
 
 	var/list/slime_core_prices = list()
+	// the amount of captive xenos for bonus research point generation
+	var/xeno_count
 
 	var/static/list/default_core_prices = list(
 		SLIME_VALUE_TIER_1,
@@ -106,6 +108,13 @@ SUBSYSTEM_DEF(research)
 		if(!techweb_list.should_generate_points)
 			continue
 		var/list/bitcoins = list()
+		var/datum/team/xeno/captive/captive_team = locate(/datum/team/xeno/captive) in GLOB.antagonist_teams
+		if(captive_team) // if there are captive xenos there will be a captive team which contains all the captive xenos
+			xeno_count = 1 //start off with 1 as the base so having 1 xeno produces 2 research per second
+			for(var/datum/mind/alien_mind in captive_team.members)
+				if(captive_team.check_captivity(alien_mind.current) == "captive_xeno_failed") //if the xeno in question is safely contained
+					xeno_count++
+				techweb_list.income_modifier = xeno_count
 		for(var/obj/machinery/rnd/server/miner as anything in techweb_list.techweb_servers)
 			if(miner.working)
 				bitcoins = single_server_income.Copy()
