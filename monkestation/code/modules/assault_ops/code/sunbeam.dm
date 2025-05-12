@@ -176,7 +176,7 @@
 			start_turf = spaceDebrisStartLoc(startside, end_turf.z)
 			new /obj/effect/sunbeam(start_turf, end_turf)
 
-datum/round_event/icarus_sunbeam/proc/victory()
+/datum/round_event/icarus_sunbeam/proc/victory()
 	SSticker.news_report = ASSAULT_RESULT_WIN
 	SSticker.force_ending = FORCE_END_ROUND
 
