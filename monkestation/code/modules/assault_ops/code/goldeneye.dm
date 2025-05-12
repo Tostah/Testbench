@@ -60,12 +60,12 @@ SUBSYSTEM_DEF(goldeneye)
 	//priority_announce(message, "GoldenEye Defence Network", ANNOUNCER_ICARUS)
 	// Set delta alert, wait a few minutes, fire multiple lasers
 	priority_announce(message, "GoldenEye Defence Network", ANNOUNCER_ICARUS)
-	SSsecurity_level.set_level(SEC_LEVEL_DELTA)
-	addtimer(CALLBACK(src, PROC_REF(fire_icarus)), ignition_time) //fire icarus multiple times?
+//	SSsecurity_level.set_level(SEC_LEVEL_DELTA)
+//	addtimer(CALLBACK(src, PROC_REF(fire_icarus)), ignition_time) //fire icarus multiple times?
 	//waits 3 minutes before firing. sets a gps signal to the goldeneye console. if the console is destroyed, it will not fire
-	var/obj/item/gps/goldeneye_gps = new /obj/item/gps
-	goldeneye_gps.gpstag = "GoldenEye Console"
-	goldeneye_gps.forceMove(locate(/obj/machinery/goldeneye_upload_terminal))
+//	var/obj/item/gps/goldeneye_gps = new /obj/item/gps
+//	goldeneye_gps.gpstag = "GoldenEye Console"
+//	goldeneye_gps.forceMove(locate(/obj/machinery/goldeneye_upload_terminal))
 
 /datum/controller/subsystem/goldeneye/proc/fire_icarus()
 	var/datum/round_event_control/icarus_sunbeam/event_to_start = new()
