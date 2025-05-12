@@ -167,7 +167,7 @@
 
 /datum/round_event/icarus_sunbeam/start()
 	if(SSgoldeneye.console_status) //if the console is destroyed before the event starts, don't fire
-		addtimer(CALLBACK(src, PROC_REF(victory)), 300 SECONDS) // if it fires the round ends in 5 minutes
+		//addtimer(CALLBACK(src, PROC_REF(victory)), 300 SECONDS) // if it fires the round ends in 5 minutes
 		var/turf/end_turf
 		var/turf/start_turf
 		for(var/count = 0; count < SUNBEAM_COUNT; count++)
@@ -176,9 +176,9 @@
 			start_turf = spaceDebrisStartLoc(startside, end_turf.z)
 			new /obj/effect/sunbeam(start_turf, end_turf)
 
-/datum/round_event/icarus_sunbeam/proc/victory()
-	SSticker.news_report = ASSAULT_RESULT_WIN
-	SSticker.force_ending = FORCE_END_ROUND
+//datum/round_event/icarus_sunbeam/proc/victory()
+//	SSticker.news_report = ASSAULT_RESULT_WIN
+//	SSticker.force_ending = FORCE_END_ROUND
 
 #undef SUNBEAM_OBLITERATION_RANGE_FIRE
 #undef SUNBEAM_OBLITERATION_RANGE_FLATTEN
