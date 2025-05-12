@@ -166,13 +166,14 @@
 	alert_sound_to_playing('monkestation/code/modules/assault_ops/sound/sunbeam_fire.ogg')
 
 /datum/round_event/icarus_sunbeam/start()
-	var/turf/end_turf
-	var/turf/start_turf
-	for(var/count = 0; count < SUNBEAM_COUNT; count++)
-		var/startside = pick(GLOB.cardinals)
-		end_turf = get_edge_target_turf(get_safe_random_station_turf_equal_weight(), turn(startside, 180))
-		start_turf = spaceDebrisStartLoc(startside, end_turf.z)
-		new /obj/effect/sunbeam(start_turf, end_turf)
+	if(SSgoldeneye.console_status) //if the console is destroyed before the event starts, don't fire
+		var/turf/end_turf
+		var/turf/start_turf
+		for(var/count = 0; count < SUNBEAM_COUNT; count++)
+			var/startside = pick(GLOB.cardinals)
+			end_turf = get_edge_target_turf(get_safe_random_station_turf_equal_weight(), turn(startside, 180))
+			start_turf = spaceDebrisStartLoc(startside, end_turf.z)
+			new /obj/effect/sunbeam(start_turf, end_turf)
 
 #undef SUNBEAM_OBLITERATION_RANGE_FIRE
 #undef SUNBEAM_OBLITERATION_RANGE_FLATTEN

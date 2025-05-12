@@ -307,7 +307,7 @@
 // Upgrade to paracetamol and aspirin if you go through the effort to get coffee.
 /datum/reagent/medicine/painkiller/aspirin_para_coffee
 	name = "aspirin/paracetamol/caffeine"
-	description = "A combination drug that effectively treats moderate pain with low side effects when used in low dosage. Toxic in higher dosages."
+	description = "A combination drug that or treats moderate pain with low side effects when used in low dosage. Toxic in higher dosages."
 	reagent_state = LIQUID
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	color = "#e695ff"

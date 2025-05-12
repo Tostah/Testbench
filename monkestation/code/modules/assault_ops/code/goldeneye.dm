@@ -23,6 +23,8 @@ SUBSYSTEM_DEF(goldeneye)
 	var/goldeneye_activated = TRUE
 	/// How long until ICARUS fires?
 	var/ignition_time = ICARUS_IGNITION_TIME
+	//if the goldeneye console is destroyed or not
+	var/console_status = TRUE
 
 /datum/controller/subsystem/goldeneye/Recover()
 	goldeneye_minds = SSgoldeneye.goldeneye_minds
@@ -60,7 +62,10 @@ SUBSYSTEM_DEF(goldeneye)
 	priority_announce(message, "GoldenEye Defence Network", ANNOUNCER_ICARUS)
 	SSsecurity_level.set_level(SEC_LEVEL_DELTA)
 	addtimer(CALLBACK(src, PROC_REF(fire_icarus)), ignition_time) //fire icarus multiple times?
-
+	//waits 3 minutes before firing. sets a gps signal to the goldeneye console. if the console is destroyed, it will not fire
+	var/obj/item/gps/goldeneye_gps = new /obj/item/gps
+	goldeneye_gps.gpstag = "GoldenEye Console"
+	goldeneye_gps.forceMove(locate(/obj/machinery/goldeneye_upload_terminal))
 
 /datum/controller/subsystem/goldeneye/proc/fire_icarus()
 	var/datum/round_event_control/icarus_sunbeam/event_to_start = new()
@@ -81,7 +86,6 @@ SUBSYSTEM_DEF(goldeneye)
 	desc = "An ominous terminal with some ports and keypads, the screen is scrolling with illegible nonsense. It has a strange marking on the side, a red ring with a gold circle within."
 	icon = 'monkestation/code/modules/assault_ops/icons/goldeneye.dmi'
 	icon_state = "goldeneye_terminal"
-	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	density = TRUE
 	/// Is the system currently in use? Used to prevent spam and abuse.
 	var/uploading = FALSE
@@ -91,7 +95,12 @@ SUBSYSTEM_DEF(goldeneye)
 		return
 	if(SSgoldeneye.goldeneye_activated)
 		SSgoldeneye.activate()
-
+/obj/machinery/goldeneye_upload_terminal/Destroy()
+	. = ..()
+	SSgoldeneye.console_status = FALSE
+	priority_announce("GoldenEye Defence Network Link Destroyed- System Offline", "Goldeneye Defense Network", ANNOUNCER_ICARUS)
+	SSsecurity_level.set_level(SEC_LEVEL_BLUE)
+	Destroy()
 //objective
 /datum/objective/goldeneye
 	name = "subvert goldeneye"
