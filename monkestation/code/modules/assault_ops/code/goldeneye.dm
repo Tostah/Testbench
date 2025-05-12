@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(goldeneye)
 	/// How many keys do we need to activate GoldenEye? Can be overriden by Dynamic if there aren't enough heads of staff.
 	var/required_minds = GOLDENEYE_REQUIRED_MINDS_MAXIMUM
 	/// Have we been activated?
-	var/goldeneye_activated = TRUE
+	var/goldeneye_activated = FALSE
 	/// How long until ICARUS fires?
 	var/ignition_time = ICARUS_IGNITION_TIME
 	//if the goldeneye console is destroyed or not
