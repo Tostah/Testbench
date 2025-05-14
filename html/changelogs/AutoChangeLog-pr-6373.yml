@@ -1,6 +1,0 @@
-author: "ThePooba"
-delete-after: True
-changes:
-  - rscadd: "Added minigun to Cybersun suit storage at syndi base"
-  - balance: "Cybersun suit key bumped to 25 tc"
-  - bugfix: "a spelling mistake"
