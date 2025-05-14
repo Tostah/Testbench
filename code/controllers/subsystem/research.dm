@@ -358,21 +358,12 @@ SUBSYSTEM_DEF(research)
 
 /datum/controller/subsystem/research/proc/checkxenos()
 	xeno_count = 1
-	var/datum/team/xeno/xeno_team = locate(/datum/team/xeno) in GLOB.antagonist_teams
-	if(xeno_team)
-		for(var/mob/living/carbon/alien/xeno in /area/station/science/xenobiology)
-			priority_announce("ADDDDD")
-			xeno_team.add_member(xeno)
-		var/datum/antagonist/xeno/captive/captive_xeno_datum = new
-		for(var/datum/mind/alien_mind in xeno_team.members)
-			if(xeno_team.check_captivity(alien_mind.current) == "captive_xeno_failed")
-				priority_announce("xenos exist in biology xeno")
-				xeno_count++
-				if(!alien_mind.has_antag_datum(captive_xeno_datum))
-					priority_announce("the xeno didnt have the captive datum")
-					alien_mind.add_antag_datum(captive_xeno_datum)
-			else
-				if(alien_mind.has_antag_datum(captive_xeno_datum))
-					priority_announce("the xeno had the captive datum")
-					alien_mind.remove_antag_datum(captive_xeno_datum)
+	for(var/datum/antagonist/xeno/alien in GLOB.antagonists)
+		if(istype(get_area(alien.owner.current), /area/station/science/xenobiology))
+			xeno_count++
+			if(!alien.owner.has_antag_datum(/datum/antagonist/xeno/captive))
+				alien.owner.add_antag_datum(/datum/antagonist/xeno/captive)
+		else
+			if(alien.owner.has_antag_datum(/datum/antagonist/xeno/captive))
+				alien.owner.remove_antag_datum(/datum/antagonist/xeno/captive)
 	return xeno_count

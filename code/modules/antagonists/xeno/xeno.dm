@@ -13,11 +13,8 @@
 		return CAPTIVE_XENO_DEAD
 
 	if(istype(get_area(alien), /area/station/science/xenobiology))
-		var/datum/objective/escape_captivity/objective = new
-		alien.mind.add_antag_datum(objective)
 		return CAPTIVE_XENO_FAIL
 
-	alien.mind.remove_antag_datum(/datum/objective/escape_captivity)
 	return CAPTIVE_XENO_PASS
 
 //Simply lists them.
