@@ -108,7 +108,6 @@ SUBSYSTEM_DEF(research)
 		if(!techweb_list.should_generate_points)
 			continue
 		var/list/bitcoins = list()
-		techweb_list.income_modifier = checkxenos() //check if there are xenos in the pen and return the multiplier
 		for(var/obj/machinery/rnd/server/miner as anything in techweb_list.techweb_servers)
 			if(miner.working)
 				bitcoins = single_server_income.Copy()
@@ -116,7 +115,7 @@ SUBSYSTEM_DEF(research)
 
 		if (techweb_list.nanite_bonus)
 			bitcoins[TECHWEB_POINT_TYPE_GENERIC] += techweb_list.nanite_bonus
-
+		techweb_list.income_modifier =+ checkxenos() //Check if there are captive xenos and return the multiplier
 		if(!isnull(techweb_list.last_income))
 			var/income_time_difference = world.time - techweb_list.last_income
 			techweb_list.last_bitcoins = bitcoins  // Doesn't take tick drift into account
@@ -357,13 +356,13 @@ SUBSYSTEM_DEF(research)
 		scientific_partners += partner
 
 /datum/controller/subsystem/research/proc/checkxenos()
-	xeno_count = 1
+	xeno_count = 0
 	for(var/datum/antagonist/xeno/alien in GLOB.antagonists)
 		if(istype(get_area(alien.owner.current), /area/station/science/xenobiology))
 			xeno_count++
 			if(!alien.owner.has_antag_datum(/datum/antagonist/xeno/captive))
 				alien.owner.add_antag_datum(/datum/antagonist/xeno/captive)
-		else
+		else //make sure if they arent in xenobiology that they dont have the captive datum
 			if(alien.owner.has_antag_datum(/datum/antagonist/xeno/captive))
 				alien.owner.remove_antag_datum(/datum/antagonist/xeno/captive)
 	return xeno_count

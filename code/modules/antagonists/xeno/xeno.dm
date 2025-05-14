@@ -8,15 +8,6 @@
 /datum/team/xeno
 	name = "\improper Aliens"
 
-/datum/team/xeno/proc/check_captivity(mob/living/alien)
-	if(!alien || alien.stat == DEAD)
-		return CAPTIVE_XENO_DEAD
-
-	if(istype(get_area(alien), /area/station/science/xenobiology))
-		return CAPTIVE_XENO_FAIL
-
-	return CAPTIVE_XENO_PASS
-
 //Simply lists them.
 /datum/team/xeno/roundend_report()
 	var/list/parts = list()
@@ -61,8 +52,7 @@
 	objective.owner = owner
 	objectives += objective
 
-
-
+//captive xenos
 /datum/antagonist/xeno/captive
 	name = "\improper Captive Xenomorph"
 
@@ -85,67 +75,11 @@
 
 /datum/objective/advance_hive/check_completion()
 	return owner.current.stat != DEAD
-/*
-///Captive Xenomorphs team
-/datum/team/xeno/captive
-	name = "\improper Captive Aliens"
-	///The first member of this team, presumably the queen.
-	var/datum/mind/progenitor
 
-/datum/team/xeno/captive/roundend_report()
-	var/list/parts = list()
-	var/escape_count = 0 //counts the number of xenomorphs that were born in captivity who ended the round outside of it
-	var/captive_count = 0 //counts the number of xenomorphs born in captivity who remained there until the end of the round (losers)
-
-	parts += "<span class='header'>The [name] were:</span> <br>"
-
-	if(check_captivity(progenitor.current) == CAPTIVE_XENO_PASS)
-		parts += span_greentext("The progenitor of this hive was [progenitor.key], as [progenitor], who successfully escaped captivity!") + "<br>"
-	else
-		parts += span_redtext("The progenitor of this hive was [progenitor.key], as [progenitor], who failed to escape captivity") + "<br>"
-
-	for(var/datum/mind/alien_mind in members)
-		if(alien_mind == progenitor)
-			continue
-
-		switch(check_captivity(alien_mind.current))
-			if(CAPTIVE_XENO_DEAD)
-				parts += "[printplayer(alien_mind, fleecheck = FALSE)] while trying to escape captivity!"
-			if(CAPTIVE_XENO_FAIL)
-				parts += "[printplayer(alien_mind, fleecheck = FALSE)] in captivity!"
-				captive_count++
-			if(CAPTIVE_XENO_PASS)
-				parts += "[printplayer(alien_mind, fleecheck = FALSE)] and managed to [span_greentext("escape captivity!")]"
-				escape_count++
-
-	parts += "<br> <span class='neutraltext big'> Overall, [captive_count] xenomorphs remained alive and in captivity, and [escape_count] managed to escape!</span> <br>"
-
-	var/thank_you_message
-	if(captive_count > escape_count)
-		thank_you_message = "xenobiological containment architecture"
-	else
-		thank_you_message = "xenofauna combat effectiveness"
-
-	parts += "<span class='neutraltext'>Nanotrasen thanks the crew of [station_name()] for providing much needed research data on <b>[thank_you_message]</b>.</span>"
-
-	return "<div class='panel redborder'>[parts.Join("<br>")]</div> <br>"
-
-/datum/team/xeno/captive/proc/check_captivity(mob/living/captive_alien)
-	if(!captive_alien || captive_alien.stat == DEAD)
-		return CAPTIVE_XENO_DEAD
-
-	if(istype(get_area(captive_alien), /area/station/science/xenobiology))
-		return CAPTIVE_XENO_FAIL
-
-	return CAPTIVE_XENO_PASS
-*/
 //XENO
 /mob/living/carbon/alien/mind_initialize()
 	..()
 	if(!mind.has_antag_datum(/datum/antagonist/xeno))
-		//if(istype(get_area(src), /area/station/science/xenobiology)) //ANY XENO which is born in the captive area (xenobiology) is considered captive
-		//	mind.add_antag_datum(/datum/antagonist/xeno/captive)
-		//else
 		mind.add_antag_datum(/datum/antagonist/xeno)
 		mind.set_assigned_role(SSjob.GetJobType(/datum/job/xenomorph))
 		mind.special_role = ROLE_ALIEN
