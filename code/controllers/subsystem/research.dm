@@ -115,7 +115,7 @@ SUBSYSTEM_DEF(research)
 
 		if (techweb_list.nanite_bonus)
 			bitcoins[TECHWEB_POINT_TYPE_GENERIC] += techweb_list.nanite_bonus
-		techweb_list.income_modifier =+ checkxenos() //Check if there are captive xenos and return the multiplier
+		techweb_list.income_modifier += checkxenos() //Check if there are captive xenos and return the multiplier
 		if(!isnull(techweb_list.last_income))
 			var/income_time_difference = world.time - techweb_list.last_income
 			techweb_list.last_bitcoins = bitcoins  // Doesn't take tick drift into account
