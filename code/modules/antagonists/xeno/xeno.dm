@@ -8,6 +8,18 @@
 /datum/team/xeno
 	name = "\improper Aliens"
 
+/datum/team/xeno/proc/check_captivity(mob/living/alien)
+	if(!alien || alien.stat == DEAD)
+		return CAPTIVE_XENO_DEAD
+
+	if(istype(get_area(alien), /area/station/science/xenobiology))
+		var/datum/objective/escape_captivity/objective = new
+		alien.mind.add_antag_datum(objective)
+		return CAPTIVE_XENO_FAIL
+
+	alien.mind.remove_antag_datum(/datum/objective/escape_captivity)
+	return CAPTIVE_XENO_PASS
+
 //Simply lists them.
 /datum/team/xeno/roundend_report()
 	var/list/parts = list()
@@ -52,28 +64,10 @@
 	objective.owner = owner
 	objectives += objective
 
+
+
 /datum/antagonist/xeno/captive
 	name = "\improper Captive Xenomorph"
-	///Our associated antagonist team for captive xenomorphs
-	var/datum/team/xeno/captive/captive_team
-
-/datum/antagonist/xeno/captive/create_team(datum/team/xeno/captive/new_team)
-	if(!new_team)
-		for(var/datum/antagonist/xeno/captive/captive_xeno in GLOB.antagonists)
-			if(!captive_xeno.owner || !captive_xeno.captive_team)
-				continue
-			captive_team = captive_xeno.captive_team
-			return
-		captive_team = new
-		captive_team.progenitor = owner
-		antag_flags |= FLAG_ANTAG_CAP_IGNORE // monkestation edit: first captive xeno does not count against cap
-	else
-		if(!istype(new_team))
-			CRASH("Wrong xeno team type provided to create_team")
-		captive_team = new_team
-
-/datum/antagonist/xeno/captive/get_team()
-	return captive_team
 
 /datum/antagonist/xeno/captive/forge_objectives()
 	var/datum/objective/escape_captivity/objective = new
@@ -87,10 +81,6 @@
 /datum/objective/escape_captivity/New()
 	explanation_text = "Escape from captivity."
 
-/datum/objective/escape_captivity/check_completion()
-	if(!istype(get_area(owner), /area/station/science/xenobiology))
-		return TRUE
-
 /datum/objective/advance_hive
 
 /datum/objective/advance_hive/New()
@@ -98,7 +88,7 @@
 
 /datum/objective/advance_hive/check_completion()
 	return owner.current.stat != DEAD
-
+/*
 ///Captive Xenomorphs team
 /datum/team/xeno/captive
 	name = "\improper Captive Aliens"
@@ -151,16 +141,15 @@
 		return CAPTIVE_XENO_FAIL
 
 	return CAPTIVE_XENO_PASS
-
+*/
 //XENO
 /mob/living/carbon/alien/mind_initialize()
 	..()
 	if(!mind.has_antag_datum(/datum/antagonist/xeno))
-		if(istype(get_area(src), /area/station/science/xenobiology)) //ANY XENO which is born in the captive area (xenobiology) is considered captive
-			mind.add_antag_datum(/datum/antagonist/xeno/captive)
-		else
-			mind.add_antag_datum(/datum/antagonist/xeno)
-
+		//if(istype(get_area(src), /area/station/science/xenobiology)) //ANY XENO which is born in the captive area (xenobiology) is considered captive
+		//	mind.add_antag_datum(/datum/antagonist/xeno/captive)
+		//else
+		mind.add_antag_datum(/datum/antagonist/xeno)
 		mind.set_assigned_role(SSjob.GetJobType(/datum/job/xenomorph))
 		mind.special_role = ROLE_ALIEN
 

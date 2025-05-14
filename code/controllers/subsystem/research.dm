@@ -108,13 +108,7 @@ SUBSYSTEM_DEF(research)
 		if(!techweb_list.should_generate_points)
 			continue
 		var/list/bitcoins = list()
-		var/datum/team/xeno/captive/captive_team = locate(/datum/team/xeno/captive) in GLOB.antagonist_teams
-		if(captive_team) // if there are captive xenos there will be a captive team which contains all the captive xenos
-			xeno_count = 1 //start off with 1 as the base so having 1 xeno produces 2 research per second
-			for(var/datum/mind/alien_mind in captive_team.members)
-				if(captive_team.check_captivity(alien_mind.current) == "captive_xeno_failed") //if the xeno in question is safely contained
-					xeno_count++
-				techweb_list.income_modifier = xeno_count
+		techweb_list.income_modifier = checkxenos() //check if there are xenos in the pen and return the multiplier
 		for(var/obj/machinery/rnd/server/miner as anything in techweb_list.techweb_servers)
 			if(miner.working)
 				bitcoins = single_server_income.Copy()
@@ -361,3 +355,24 @@ SUBSYSTEM_DEF(research)
 			for (var/datum/experiment/ordnance/ordnance_experiment as anything in ordnance_experiments)
 				partner.accepted_experiments += ordnance_experiment.type
 		scientific_partners += partner
+
+/datum/controller/subsystem/research/proc/checkxenos()
+	xeno_count = 1
+	var/datum/team/xeno/xeno_team = locate(/datum/team/xeno) in GLOB.antagonist_teams
+	if(xeno_team)
+		for(var/mob/living/carbon/alien/xeno in /area/station/science/xenobiology)
+			priority_announce("ADDDDD")
+			xeno_team.add_member(xeno)
+		var/datum/antagonist/xeno/captive/captive_xeno_datum = new
+		for(var/datum/mind/alien_mind in xeno_team.members)
+			if(xeno_team.check_captivity(alien_mind.current) == "captive_xeno_failed")
+				priority_announce("xenos exist in biology xeno")
+				xeno_count++
+				if(!alien_mind.has_antag_datum(captive_xeno_datum))
+					priority_announce("the xeno didnt have the captive datum")
+					alien_mind.add_antag_datum(captive_xeno_datum)
+			else
+				if(alien_mind.has_antag_datum(captive_xeno_datum))
+					priority_announce("the xeno had the captive datum")
+					alien_mind.remove_antag_datum(captive_xeno_datum)
+	return xeno_count
