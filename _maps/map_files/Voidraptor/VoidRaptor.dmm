@@ -129,7 +129,7 @@
 "abP" = (
 /obj/effect/spawner/random/medical/two_percent_xeno_egg_spawner,
 /turf/open/floor/circuit/green,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "abQ" = (
 /turf/closed/wall,
 /area/station/medical/medbay/central)
@@ -1677,7 +1677,7 @@
 /area/station/hallway/secondary/exit/departure_lounge)
 "axD" = (
 /turf/open/floor/circuit/green,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "axN" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Pharmacy Maintenance"
@@ -19083,7 +19083,7 @@
 	req_access = list("xenobiology")
 	},
 /turf/open/floor/engine,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "fyy" = (
 /obj/effect/mapping_helpers/airlock/abandoned,
 /obj/machinery/door/airlock/maintenance{
@@ -24791,7 +24791,7 @@
 /obj/structure/disposalpipe/trunk,
 /obj/effect/turf_decal/box/red,
 /turf/open/floor/engine,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "hdZ" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 5
@@ -27118,7 +27118,7 @@
 	network = list("ss13","xeno","rd")
 	},
 /turf/open/floor/engine,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "hNy" = (
 /obj/structure/railing{
 	dir = 8
@@ -32416,7 +32416,7 @@
 /area/station/maintenance/department/bridge)
 "jji" = (
 /turf/open/floor/engine,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "jjw" = (
 /obj/structure/table/wood,
 /obj/item/storage/fancy/candle_box{
@@ -34963,7 +34963,7 @@
 "jRP" = (
 /obj/machinery/light/cold/directional/north,
 /turf/open/floor/engine,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "jSl" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/trimline/brown/filled/mid_joiner,
@@ -38680,7 +38680,7 @@
 	dir = 4
 	},
 /turf/open/floor/engine,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "kSY" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
@@ -47242,7 +47242,7 @@
 "nlj" = (
 /obj/effect/decal/cleanable/xenoblood,
 /turf/open/floor/circuit/green,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "nll" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
@@ -63451,7 +63451,7 @@
 /obj/effect/spawner/random/engineering/tracking_beacon,
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/circuit/green,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "rHN" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -85147,7 +85147,7 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/engine,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "xGe" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,

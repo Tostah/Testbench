@@ -1036,7 +1036,7 @@
 	network = list("ss13","rd","xeno")
 	},
 /turf/open/floor/engine,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "asM" = (
 /obj/machinery/computer/prisoner/management{
 	dir = 4
@@ -2887,7 +2887,7 @@
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "aWB" = (
 /obj/effect/spawner/random/structure/closet_maintenance,
 /obj/item/clothing/head/costume/festive,
@@ -5254,7 +5254,7 @@
 /obj/item/multitool,
 /obj/item/stock_parts/cell/high,
 /turf/open/floor/engine,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "bPy" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -5738,7 +5738,7 @@
 /obj/structure/cable,
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/engine,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "cbr" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -8392,7 +8392,7 @@
 /area/station/ai_monitored/aisat/exterior)
 "ddh" = (
 /turf/open/floor/engine,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "ddl" = (
 /obj/structure/table,
 /obj/item/stack/sheet/iron/fifty,
@@ -10190,7 +10190,7 @@
 	id = "Xenobio"
 	},
 /turf/open/floor/engine,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "dLq" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -18071,7 +18071,7 @@
 "gyK" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
 /turf/open/floor/engine,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "gyQ" = (
 /turf/closed/wall/r_wall,
 /area/station/science/ordnance)
@@ -19046,7 +19046,7 @@
 "gSd" = (
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/engine,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "gSn" = (
 /obj/item/wrench,
 /turf/open/floor/iron,
@@ -19814,7 +19814,7 @@
 /obj/structure/cable,
 /obj/structure/sign/warning/electric_shock,
 /turf/open/floor/engine,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "hdF" = (
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/machinery/suit_storage_unit/medical,
@@ -28427,7 +28427,7 @@
 	},
 /obj/effect/spawner/random/engineering/tracking_beacon,
 /turf/open/floor/engine,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "jQM" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
@@ -29100,7 +29100,7 @@
 	},
 /obj/item/electropack,
 /turf/open/floor/engine,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "kcF" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -38538,7 +38538,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/engine,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "nne" = (
 /obj/structure/sign/plaques/kiddie/perfect_drone{
 	pixel_y = 32
@@ -39778,7 +39778,7 @@
 "nJr" = (
 /obj/effect/spawner/random/medical/two_percent_xeno_egg_spawner,
 /turf/open/floor/engine,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "nJu" = (
 /obj/structure/closet/secure_closet/security/sec,
 /obj/effect/turf_decal/tile/red/half/contrasted{
@@ -56075,7 +56075,7 @@
 "tmt" = (
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/engine,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "tmz" = (
 /obj/machinery/door/poddoor/shutters{
 	dir = 1;
@@ -57638,7 +57638,7 @@
 	name = "Test Chamber Blast Door"
 	},
 /turf/open/floor/engine,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "tRm" = (
 /obj/structure/window/reinforced/spawner/directional/east,
 /obj/structure/window/reinforced/spawner/directional/west,
@@ -68508,7 +68508,7 @@
 /area/station/medical/medbay/lobby)
 "xFr" = (
 /turf/closed/wall/r_wall,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "xFs" = (
 /obj/machinery/door/window/left/directional/north{
 	dir = 8;
@@ -69381,7 +69381,7 @@
 	},
 /obj/structure/liquid_barrier,
 /turf/open/floor/engine,
-/area/station/xenobiology/cell)
+/area/station/science/xenobiology/cell)
 "xWm" = (
 /obj/structure/rack,
 /obj/item/restraints/handcuffs{
