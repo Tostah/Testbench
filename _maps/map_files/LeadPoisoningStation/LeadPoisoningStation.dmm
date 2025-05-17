@@ -11687,7 +11687,7 @@
 /obj/effect/spawner/random/medical/two_percent_xeno_egg_spawner,
 /obj/effect/spawner/random/medical/two_percent_xeno_egg_spawner,
 /turf/open/floor/engine,
-/area/station/science/xenobiology)
+/area/station/xenobiology/cell)
 "fLa" = (
 /obj/machinery/disposal/delivery_chute{
 	name = "Critically Wounded Dropoff Point"
@@ -11698,7 +11698,7 @@
 "fLl" = (
 /obj/effect/spawner/random/engineering/tracking_beacon,
 /turf/open/floor/engine,
-/area/station/science/xenobiology)
+/area/station/xenobiology/cell)
 "fLu" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/north,
@@ -12239,7 +12239,7 @@
 	dir = 4
 	},
 /turf/open/floor/engine,
-/area/station/science/xenobiology)
+/area/station/xenobiology/cell)
 "fWz" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -14534,7 +14534,7 @@
 /area/station/commons/lounge)
 "hcY" = (
 /turf/open/floor/engine,
-/area/station/science/xenobiology)
+/area/station/xenobiology/cell)
 "hdj" = (
 /mob/living/basic/carp/mega,
 /turf/open/floor/plating,
@@ -20626,7 +20626,7 @@
 "jSL" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/engine,
-/area/station/science/xenobiology)
+/area/station/xenobiology/cell)
 "jSN" = (
 /obj/structure/window/reinforced/spawner/directional/north,
 /obj/structure/window/reinforced/spawner/directional/south,
@@ -21878,7 +21878,7 @@
 "kxO" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
 /turf/open/floor/engine,
-/area/station/science/xenobiology)
+/area/station/xenobiology/cell)
 "kxT" = (
 /obj/structure/table,
 /obj/item/paper_bin{
@@ -25236,7 +25236,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/engine,
-/area/station/science/xenobiology)
+/area/station/xenobiology/cell)
 "mdh" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
@@ -31090,7 +31090,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/engine,
-/area/station/science/xenobiology)
+/area/station/xenobiology/cell)
 "oTk" = (
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron,
@@ -36649,7 +36649,7 @@
 	name = "Test Chamber Blast Door"
 	},
 /turf/open/floor/engine,
-/area/station/science/xenobiology)
+/area/station/xenobiology/cell)
 "rEx" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/spawner/random/structure/crate_empty,
@@ -45552,7 +45552,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
 /turf/open/floor/engine,
-/area/station/science/xenobiology)
+/area/station/xenobiology/cell)
 "vPU" = (
 /obj/machinery/light/directional/east,
 /obj/structure/sign/directions/cryo/directional/east{
@@ -48009,7 +48009,7 @@
 	dir = 8
 	},
 /turf/open/floor/engine,
-/area/station/science/xenobiology)
+/area/station/xenobiology/cell)
 "wZi" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
