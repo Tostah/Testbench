@@ -46,6 +46,7 @@
 	var/set_leader = FALSE
 	var/required_role = ROLE_NUCLEAR_OPERATIVE
 	var/datum/mind/most_experienced
+	fakeable = TRUE
 
 /datum/round_event/antagonist/solo/ghost/nuclear_operative/add_datum_to_mind(datum/mind/antag_mind)
 	if(most_experienced == antag_mind)
@@ -106,3 +107,15 @@
 		else
 			SSticker.mode_result = "halfwin - interrupted"
 			SSticker.news_report = OPERATIVE_SKIRMISH
+
+/datum/round_event/antagonist/solo/ghost/nuclear_operative/announce(fake)
+	if(!fake)
+		return
+	else
+		priority_announce(
+		text = "A syndicate fringe group has declared their intent to utterly destroy [station_name()] with a nuclear device, and dares the crew to try and stop them.",
+		title = "Declaration of War",
+		sound = 'sound/machines/alarm.ogg',
+		has_important_message = TRUE,
+		sender_override = "Nuclear Operative Outpost",
+		color_override = "red",)
