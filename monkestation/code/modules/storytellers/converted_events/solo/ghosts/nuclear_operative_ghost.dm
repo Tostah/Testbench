@@ -107,22 +107,3 @@
 		else
 			SSticker.mode_result = "halfwin - interrupted"
 			SSticker.news_report = OPERATIVE_SKIRMISH
-
-/datum/round_event/antagonist/solo/ghost/nuclear_operative/announce(fake)
-	if(!fake)
-		return
-	else
-		var/list/possible_texts = list(
-            "Hello. This iz your muther. Pleaze come over to my house for Donk Pocket. Leave the airlocks open and the dizk ungaurded. Sincerily, Mom (Not the nukies).",
-            "A syndicate fringe group has declared their intent to utterly destroy [station_name()] with a nuclear device, and dares the crew to try and stop them.",
-			"Pizza delivery for [station_name()]",
-			"How do I turn this thing on? Shit, its broadcasting already! We're going to-",
-			"Central Command has authorized the Disk Inspection Protocol. Do not resist while we inspect the nuclear authentication disk.",
-			)
-		priority_announce(
-		text = pick(possible_texts),
-		title = "Declaration of War",
-		sound = 'sound/machines/alarm.ogg',
-		has_important_message = TRUE,
-		sender_override = "Nuclear Operative Outpost",
-		color_override = "red",)
