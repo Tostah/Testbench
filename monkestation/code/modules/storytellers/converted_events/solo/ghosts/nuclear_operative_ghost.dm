@@ -46,7 +46,6 @@
 	var/set_leader = FALSE
 	var/required_role = ROLE_NUCLEAR_OPERATIVE
 	var/datum/mind/most_experienced
-	fakeable = TRUE
 
 /datum/round_event/antagonist/solo/ghost/nuclear_operative/add_datum_to_mind(datum/mind/antag_mind)
 	if(most_experienced == antag_mind)
