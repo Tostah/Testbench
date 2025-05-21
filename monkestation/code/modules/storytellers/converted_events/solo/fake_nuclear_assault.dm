@@ -32,7 +32,7 @@
 
 /datum/round_event/antagonist/solo/fake_nuclear_assault/announce()
 	for(var/datum/antagonist/antag in GLOB.antagonists) //search all antags for clownops or nukeops
-		if(istype(antag, /datum/antagonist/nukeop) || istype(antag, /datum/antagonist/clownop))
+		if(istype(antag, /datum/antagonist/nukeop) || istype(antag, /datum/antagonist/nukeop/clownop))
 			return //dont false alarm if there are nukeops
 	addtimer(CALLBACK(src, PROC_REF(declare_war_message)), 30 SECONDS)
 
