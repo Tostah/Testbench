@@ -1,8 +1,6 @@
 //A 'Fake' nuclear assault which sends out the nuclear assault declaration after 5 minutes. Basically a roundstart false alarm.
 /datum/round_event_control/antagonist/solo/fake_nuclear_assault
 	name = "Fake Nuclear Assault"
-	tags = list(TAG_DESTRUCTIVE, TAG_COMBAT, TAG_TEAM_ANTAG, TAG_EXTERNAL, TAG_OUTSIDER_ANTAG) //needs all the same tags as regular nukeops so that it cant spawn at the same time
-	//antag_flag = ROLE_OPERATIVE
 	//antag_datum = /datum/antagonist/nukeop
 	typepath = /datum/round_event/antagonist/solo/fake_nuclear_assault
 	//shared_occurence_type = SHARED_HIGH_THREAT
@@ -33,6 +31,9 @@
 	fakeable = TRUE
 
 /datum/round_event/antagonist/solo/fake_nuclear_assault/announce()
+	for(var/datum/antagonist/antag in GLOB.antagonists) //search all antags for clownops or nukeops
+		if(istype(antag, /datum/antagonist/nukeop) || istype(antag, /datum/antagonist/clownop))
+			return //dont false alarm if there are nukeops
 	addtimer(CALLBACK(src, PROC_REF(declare_war_message)), 30 SECONDS)
 
 /datum/round_event/antagonist/solo/fake_nuclear_assault/proc/declare_war_message()
