@@ -48,6 +48,8 @@
 	return finish_preview_icon(icon('icons/mob/nonhuman-player/alien.dmi', "alienh"))
 
 /datum/antagonist/xeno/forge_objectives()
+	if(locate(/datum/objective/advance_hive) in objectives)
+		return
 	var/datum/objective/advance_hive/objective = new
 	objective.owner = owner
 	objectives += objective
@@ -57,6 +59,8 @@
 	name = "\improper Captive Xenomorph"
 
 /datum/antagonist/xeno/captive/forge_objectives()
+	if(locate(/datum/objective/escape_captivity) in objectives)
+		return
 	var/datum/objective/escape_captivity/objective = new
 	objective.owner = owner
 	objectives += objective
@@ -78,12 +82,28 @@
 
 //XENO
 /mob/living/carbon/alien/mind_initialize()
-	..()
-	if(!mind.has_antag_datum(/datum/antagonist/xeno))
-		mind.add_antag_datum(/datum/antagonist/xeno)
-		mind.set_assigned_role(SSjob.GetJobType(/datum/job/xenomorph))
-		mind.special_role = ROLE_ALIEN
+	if(mind.has_antag_datum(/datum/antagonist/xeno)|| mind.has_antag_datum(/datum/antagonist/xeno/captive))
+		return //already has an antag datum, no need to add it again)
+	mind.add_antag_datum(/datum/antagonist/xeno)
+	mind.set_assigned_role(SSjob.get_job_type(/datum/job/xenomorph))
+	mind.special_role = ROLE_ALIEN
+	var/area/xenocell = locate(/area/station/science/xenobiology/cell)
+	if(xenocell)
+		RegisterSignal(xenocell, COMSIG_AREA_ENTERED, PROC_REF(on_xenobio_cell_occupancy_changed))
+		RegisterSignal(xenocell, COMSIG_AREA_EXITED, PROC_REF(on_xenobio_cell_occupancy_changed))
 
+/mob/living/carbon/alien/proc/on_xenobio_cell_occupancy_changed()
+	var/datum/team/xeno/xeno_team = locate(/datum/team/xeno) in GLOB.antagonist_teams
+	if(xeno_team)
+		for(var/datum/mind/alien in xeno_team.members)
+			if(istype(get_area(alien.current), /area/station/science/xenobiology/cell)  && alien.current.stat != DEAD)
+				if(!alien.has_antag_datum(/datum/antagonist/xeno/captive))
+					alien.add_antag_datum(/datum/antagonist/xeno/captive)
+			else //make sure if they arent in xenobiology that they dont have the captive datum
+				if(alien.has_antag_datum(/datum/antagonist/xeno/captive))
+					alien.remove_antag_datum(/datum/antagonist/xeno/captive)
+			xeno_team.add_member(alien) //ensure the alien remains a part of the xeno team
+	return
 /mob/living/carbon/alien/on_wabbajacked(mob/living/new_mob)
 	. = ..()
 	if(!mind)

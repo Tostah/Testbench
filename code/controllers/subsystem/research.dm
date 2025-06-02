@@ -78,8 +78,6 @@ SUBSYSTEM_DEF(research)
 	var/list/scientific_partners = list()
 
 	var/list/slime_core_prices = list()
-	// the amount of captive xenos for bonus research point generation
-	var/xeno_count
 
 	var/static/list/default_core_prices = list(
 		SLIME_VALUE_TIER_1,
@@ -353,18 +351,10 @@ SUBSYSTEM_DEF(research)
 		scientific_partners += partner
 
 /datum/controller/subsystem/research/proc/checkxenos()
-	xeno_count = 1
-	//var/datum/antagonist/xeno/alien in GLOB.antagonists
+	var/xeno_count = 1
 	var/datum/team/xeno/xeno_team = locate(/datum/team/xeno) in GLOB.antagonist_teams
 	if(xeno_team)
 		for(var/datum/mind/alien in xeno_team.members)
 			if(istype(get_area(alien.current), /area/station/science/xenobiology/cell)  && alien.current.stat != DEAD)
 				xeno_count++
-				if(!alien.has_antag_datum(/datum/antagonist/xeno/captive))
-					alien.add_antag_datum(/datum/antagonist/xeno/captive)
-			else //make sure if they arent in xenobiology that they dont have the captive datum
-				if(alien.has_antag_datum(/datum/antagonist/xeno/captive))
-					alien.remove_antag_datum(/datum/antagonist/xeno/captive)
-			xeno_team.add_member(alien) //ensure the alien remains a part of the xeno team
-
 	return xeno_count
