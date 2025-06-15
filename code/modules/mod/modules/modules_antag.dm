@@ -100,7 +100,7 @@
 	var/list/airs = islist(sair) ? T : list(sair)
 	for(var/datum/gas_mixture/air as anything in airs)
 		var/pressure = air.return_pressure()
-		if(pressure < 20 || pressure > 30)
+		if(pressure < 20 || pressure > 25)
 			if(active)
 				on_deactivation()
 		else
