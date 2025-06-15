@@ -5,10 +5,8 @@
 	name = "MOD armor booster module"
 	desc = "A retrofitted series of retractable armor plates, allowing the suit to function as essentially power armor, \
 		giving the user incredible protection against conventional firearms, or everyday attacks in close-quarters. \
-		However, the additional plating cannot deploy alongside parts of the suit used for vacuum sealing, \
-		so this extra armor provides zero ability for extravehicular activity while deployed."
+		The additional plating automatically retracts when exposed to space and extends when the user is in a safe environment. \""
 	icon_state = "armor_booster"
-	module_type = MODULE_ACTIVE
 	active_power_cost = DEFAULT_CHARGE_DRAIN * 0.3
 	removable = FALSE
 	incompatible_modules = list(/obj/item/mod/module/armor_booster, /obj/item/mod/module/welding)
@@ -98,18 +96,16 @@
 	var/turf/T = get_turf(user)
 	if(!T)
 		return
-	var/air = T.return_analyzable_air()
-	var/list/airs = islist(T) ? T : list(T)
+	var/sair = T.return_analyzable_air()
+	var/list/airs = islist(sair) ? T : list(sair)
 	for(var/datum/gas_mixture/air as anything in airs)
-		if(airs.len > 1) //not a unary gas mixture
-			var/mix_number = airs.Find(air)
 		var/pressure = air.return_pressure()
-		if(pressure < 20)
-			if(!active)
-				on_activation()
-		else
+		if(pressure < 20 || pressure > 30)
 			if(active)
 				on_deactivation()
+		else
+			if(!active)
+				on_activation()
 ///Energy Shield - Gives you a rechargeable energy shield that nullifies attacks.
 /obj/item/mod/module/energy_shield
 	name = "MOD energy shield module"
