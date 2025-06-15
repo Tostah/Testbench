@@ -8,7 +8,7 @@
 		However, the additional plating cannot deploy alongside parts of the suit used for vacuum sealing, \
 		so this extra armor provides zero ability for extravehicular activity while deployed."
 	icon_state = "armor_booster"
-	module_type = MODULE_TOGGLE
+	module_type = MODULE_ACTIVE
 	active_power_cost = DEFAULT_CHARGE_DRAIN * 0.3
 	removable = FALSE
 	incompatible_modules = list(/obj/item/mod/module/armor_booster, /obj/item/mod/module/welding)
@@ -41,6 +41,7 @@
 
 /obj/item/mod/module/armor_booster/on_suit_activation()
 	mod.helmet.flash_protect = FLASH_PROTECTION_WELDER
+	RegisterSignal(mod.wearer, COMSIG_MOVABLE_MOVED, PROC_REF(on_user_moved))
 
 /obj/item/mod/module/armor_booster/on_suit_deactivation(deleting = FALSE)
 	if(deleting)
@@ -90,6 +91,25 @@
 		overlay_icon_file = 'monkestation/icons/mob/mod.dmi' //if the user has a snout, and the module supports a snout, we'll shift to the digi/snout icon file instead
 	return ..()
 
+/obj/item/mod/module/armor_booster/proc/on_user_moved(datum/source, turf/newloc, turf/oldloc)
+	if(!istype(source, /mob/living))
+		return
+	var/mob/living/user = source
+	var/turf/T = get_turf(user)
+	if(!T)
+		return
+	var/air = T.return_analyzable_air()
+	var/list/airs = islist(T) ? T : list(T)
+	for(var/datum/gas_mixture/air as anything in airs)
+		if(airs.len > 1) //not a unary gas mixture
+			var/mix_number = airs.Find(air)
+		var/pressure = air.return_pressure()
+		if(pressure < 20)
+			if(!active)
+				on_activation()
+		else
+			if(active)
+				on_deactivation()
 ///Energy Shield - Gives you a rechargeable energy shield that nullifies attacks.
 /obj/item/mod/module/energy_shield
 	name = "MOD energy shield module"
