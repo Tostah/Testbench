@@ -85,7 +85,7 @@
 	if(mind.has_antag_datum(/datum/antagonist/xeno)|| mind.has_antag_datum(/datum/antagonist/xeno/captive))
 		return //already has an antag datum, no need to add it again)
 	mind.add_antag_datum(/datum/antagonist/xeno)
-	mind.set_assigned_role(SSjob.get_job_type(/datum/job/xenomorph))
+	mind.set_assigned_role(SSjob.GetJobType(/datum/job/xenomorph))
 	mind.special_role = ROLE_ALIEN
 	var/area/xenocell = locate(/area/station/science/xenobiology/cell)
 	if(xenocell)
