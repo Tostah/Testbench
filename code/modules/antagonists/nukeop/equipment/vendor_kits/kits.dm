@@ -112,7 +112,6 @@
 	generate_items_inside(list(
 		/obj/item/mod/control/pre_equipped/traitor = 1,
 		/obj/item/mod/module/chameleon = 1,
-		/obj/item/tank/jetpack/harness = 1,
 		/obj/item/mod/control/pre_equipped/infiltrator = 1,
 		/obj/item/gun/ballistic/revolver/syndicate = 1,
 		/obj/item/ammo_box/a357 = 2,
@@ -260,7 +259,7 @@
 
 /obj/item/storage/box/syndie_kit/leader/PopulateContents()
 	generate_items_inside(list(
-		/obj/item/mod/control/pre_equipped/elite = 1,
+		/obj/item/mod/module/energy_shield = 1,
 		/obj/item/gun/ballistic/automatic/plastikov/refurbished = 2,
 		/obj/item/ammo_box/magazine/plastikov9mm/red = 2,
 		/obj/item/wrench/combat = 1,
