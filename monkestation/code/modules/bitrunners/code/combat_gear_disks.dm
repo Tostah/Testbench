@@ -33,7 +33,7 @@
 	item_path = /obj/item/bitrunning_disk/item/monkestation_override/medbeam
 
 /obj/item/bitrunning_disk/item/monkestation_override/medbeam
-	name = "bitrunning gear: "
+	name = "bitrunning gear: Medical Beamgun"
 	icon_state = "beamgun"
 	selectable_items = /obj/item/gun/medbeam
 
