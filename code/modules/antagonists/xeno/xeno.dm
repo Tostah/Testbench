@@ -155,6 +155,8 @@
 //XENO
 /mob/living/carbon/alien/mind_initialize()
 	..()
+	if (HAS_TRAIT(src, TRAIT_NEUTERED)) //skip antagonist assignment if neutered
+		mind.add_antag_datum(/datum/antagonist/xeno/neutered)
 	if(!mind.has_antag_datum(/datum/antagonist/xeno))
 		if(SScommunications.xenomorph_egg_delivered && istype(get_area(src), SScommunications.captivity_area))
 			mind.add_antag_datum(/datum/antagonist/xeno/captive)
@@ -177,3 +179,16 @@
 #undef CAPTIVE_XENO_DEAD
 #undef CAPTIVE_XENO_FAIL
 #undef CAPTIVE_XENO_PASS
+
+/datum/antagonist/xeno/neutered
+	name = "\improper Neutered Xenomorph"
+
+/datum/antagonist/xeno/neutered/forge_objectives()
+	var/datum/objective/new_queen/objective = new
+	objective.owner = owner
+	objectives += objective
+	..()
+/datum/objective/new_queen
+
+/datum/objective/new_queen/New()
+	explanation_text = "Your queen is the person closest to you."
