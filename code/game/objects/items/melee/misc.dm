@@ -100,12 +100,12 @@
 	return ..()
 
 /obj/item/melee/sabre/on_exit_storage(datum/storage/container)
-	var/obj/item/storage/belt/sabre/sabre = container.real_location?.resolve()
+	var/obj/item/storage/belt/sabre/sabre = container.real_location
 	if(istype(sabre))
 		playsound(sabre, 'sound/items/unsheath.ogg', 25, TRUE)
 
 /obj/item/melee/sabre/on_enter_storage(datum/storage/container)
-	var/obj/item/storage/belt/sabre/sabre = container.real_location?.resolve()
+	var/obj/item/storage/belt/sabre/sabre = container.real_location
 	if(istype(sabre))
 		playsound(sabre, 'sound/items/sheath.ogg', 25, TRUE)
 
@@ -168,7 +168,7 @@
 	throwforce = 10
 	attack_speed = CLICK_CD_RAPID
 	block_chance = 20
-	armour_penetration = 65
+	armour_penetration = 100
 	attack_verb_continuous = list("slashes", "stings", "prickles", "pokes")
 	attack_verb_simple = list("slash", "sting", "prickle", "poke")
 	hitsound = 'sound/weapons/rapierhit.ogg'
@@ -461,6 +461,6 @@
 	throwforce = 8
 	block_chance = 10
 	block_sound = 'sound/weapons/genhit.ogg'
-	armour_penetration = 50
+	armour_penetration = 75
 	attack_verb_continuous = list("smacks", "strikes", "cracks", "beats")
 	attack_verb_simple = list("smack", "strike", "crack", "beat")
