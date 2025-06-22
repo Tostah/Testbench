@@ -35,8 +35,7 @@
 
 /obj/item/storage/box/syndie_kit/assault_trooper/PopulateContents()
 	generate_items_inside(list(
-		/obj/item/clothing/head/helmet/space/syndicate/green = 1,
-		/obj/item/clothing/suit/space/syndicate/green = 1,
+		/obj/item/mod/control/pre_equipped/traitor = 1,
 		/obj/item/tank/jetpack/harness = 1,
 		/obj/item/gun/ballistic/automatic/rostokov = 1,
 		/obj/item/ammo_box/magazine/rostokov9mm = 4,
@@ -61,8 +60,7 @@
 
 /obj/item/storage/box/syndie_kit/heavy_assault_trooper/PopulateContents()
 	generate_items_inside(list(
-		/obj/item/clothing/head/helmet/space/syndicate/green/dark = 1,
-		/obj/item/clothing/suit/space/syndicate/green/dark = 1,
+		/obj/item/mod/control/pre_equipped/traitor = 1,
 		/obj/item/tank/jetpack/harness = 1,
 		/obj/item/shield/energy = 1,
 		/obj/item/melee/energy/sword/saber = 1,
@@ -90,8 +88,7 @@
 
 /obj/item/storage/box/syndie_kit/sniper/PopulateContents()
 	generate_items_inside(list(
-		/obj/item/clothing/head/helmet/space/syndicate/black/green = 1,
-		/obj/item/clothing/suit/space/syndicate/black/green = 1,
+		/obj/item/mod/control/pre_equipped/elite = 1,
 		/obj/item/tank/jetpack/harness = 1,
 		/obj/item/gun/ballistic/rifle/sniper_rifle/syndicate = 1,
 		/obj/item/suppressor = 1,
@@ -148,8 +145,7 @@
 
 /obj/item/storage/box/syndie_kit/scout/PopulateContents()
 	generate_items_inside(list(
-		/obj/item/clothing/head/helmet/space/syndicate/black/blue = 1,
-		/obj/item/clothing/suit/space/syndicate/black/blue = 1,
+		/obj/item/mod/control/pre_equipped/traitor = 1,
 		/obj/item/tank/jetpack/harness = 1,
 		/obj/item/gun/ballistic/automatic/plastikov/refurbished = 1,
 		/obj/item/suppressor = 1,
@@ -176,8 +172,7 @@
 
 /obj/item/storage/box/syndie_kit/grenadier/PopulateContents()
 	generate_items_inside(list(
-		/obj/item/clothing/head/helmet/space/syndicate/black = 1,
-		/obj/item/clothing/suit/space/syndicate/black = 1,
+		/obj/item/mod/control/pre_equipped/elite = 1,
 		/obj/item/tank/jetpack/harness = 1,
 		/obj/item/gun/ballistic/shotgun/china_lake/restricted = 1,
 		/obj/item/storage/belt/grenade/grenadier = 1,
@@ -218,8 +213,7 @@
 
 /obj/item/storage/box/syndie_kit/medic/PopulateContents()
 	generate_items_inside(list(
-		/obj/item/clothing/head/helmet/space/syndicate/black/med = 1,
-		/obj/item/clothing/suit/space/syndicate/black/med = 1,
+		/obj/item/mod/control/pre_equipped/traitor = 1,
 		/obj/item/tank/jetpack/harness = 1,
 		/obj/item/gun/ballistic/automatic/plastikov/refurbished = 1,
 		/obj/item/ammo_box/magazine/plastikov9mm/red = 2,
@@ -247,8 +241,7 @@
 
 /obj/item/storage/box/syndie_kit/engineer/PopulateContents()
 	generate_items_inside(list(
-		/obj/item/clothing/head/helmet/space/syndicate/black/engie = 1,
-		/obj/item/clothing/suit/space/syndicate/black/engie = 1,
+		/obj/item/mod/control/pre_equipped/traitor = 1,
 		/obj/item/tank/jetpack/harness = 1,
 		/obj/item/gun/ballistic/automatic/plastikov/refurbished = 1,
 		/obj/item/ammo_box/magazine/plastikov9mm/red = 2,
@@ -276,8 +269,7 @@
 
 /obj/item/storage/box/syndie_kit/leader/PopulateContents()
 	generate_items_inside(list(
-		/obj/item/clothing/head/helmet/space/syndicate/black/red = 1,
-		/obj/item/clothing/suit/space/syndicate/black/red = 1,
+		/obj/item/mod/control/pre_equipped/elite = 1,
 		/obj/item/tank/jetpack/harness = 1,
 		/obj/item/gun/ballistic/automatic/plastikov/refurbished = 2,
 		/obj/item/ammo_box/magazine/plastikov9mm/red = 2,
