@@ -36,7 +36,6 @@
 /obj/item/storage/box/syndie_kit/assault_trooper/PopulateContents()
 	generate_items_inside(list(
 		/obj/item/mod/control/pre_equipped/traitor = 1,
-		/obj/item/tank/jetpack/harness = 1,
 		/obj/item/gun/ballistic/automatic/rostokov = 1,
 		/obj/item/ammo_box/magazine/rostokov9mm = 4,
 		/obj/item/melee/energy/sword/saber = 1,
@@ -61,7 +60,6 @@
 /obj/item/storage/box/syndie_kit/heavy_assault_trooper/PopulateContents()
 	generate_items_inside(list(
 		/obj/item/mod/control/pre_equipped/traitor = 1,
-		/obj/item/tank/jetpack/harness = 1,
 		/obj/item/shield/energy = 1,
 		/obj/item/melee/energy/sword/saber = 1,
 		/obj/item/gun/ballistic/shotgun/bulldog = 1,
@@ -89,7 +87,6 @@
 /obj/item/storage/box/syndie_kit/sniper/PopulateContents()
 	generate_items_inside(list(
 		/obj/item/mod/control/pre_equipped/elite = 1,
-		/obj/item/tank/jetpack/harness = 1,
 		/obj/item/gun/ballistic/rifle/sniper_rifle/syndicate = 1,
 		/obj/item/suppressor = 1,
 		/obj/item/ammo_box/magazine/sniper_rounds = 3,
@@ -264,7 +261,7 @@
 /obj/item/storage/box/syndie_kit/leader/PopulateContents()
 	generate_items_inside(list(
 		/obj/item/mod/control/pre_equipped/elite = 1,
-		/obj/item/tank/jetpack/harness = 1,
+		/obj/item/mod/module/energy_shield = 1,
 		/obj/item/gun/ballistic/automatic/plastikov/refurbished = 2,
 		/obj/item/ammo_box/magazine/plastikov9mm/red = 2,
 		/obj/item/wrench/combat = 1,
