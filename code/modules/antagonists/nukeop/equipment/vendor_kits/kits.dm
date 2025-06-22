@@ -113,8 +113,8 @@
 
 /obj/item/storage/box/syndie_kit/infiltrator/PopulateContents()
 	generate_items_inside(list(
-		/obj/item/clothing/head/helmet/space/syndicate/blue = 1,
-		/obj/item/clothing/suit/space/syndicate/blue = 1,
+		/obj/item/mod/control/pre_equipped/traitor = 1,
+		/obj/item/mod/module/chameleon = 1,
 		/obj/item/tank/jetpack/harness = 1,
 		/obj/item/mod/control/pre_equipped/infiltrator = 1,
 		/obj/item/gun/ballistic/revolver/syndicate = 1,
@@ -146,7 +146,6 @@
 /obj/item/storage/box/syndie_kit/scout/PopulateContents()
 	generate_items_inside(list(
 		/obj/item/mod/control/pre_equipped/traitor = 1,
-		/obj/item/tank/jetpack/harness = 1,
 		/obj/item/gun/ballistic/automatic/plastikov/refurbished = 1,
 		/obj/item/suppressor = 1,
 		/obj/item/ammo_box/magazine/plastikov9mm/red = 2,
@@ -173,7 +172,6 @@
 /obj/item/storage/box/syndie_kit/grenadier/PopulateContents()
 	generate_items_inside(list(
 		/obj/item/mod/control/pre_equipped/elite = 1,
-		/obj/item/tank/jetpack/harness = 1,
 		/obj/item/gun/ballistic/shotgun/china_lake/restricted = 1,
 		/obj/item/storage/belt/grenade/grenadier = 1,
 		/obj/item/clothing/glasses/sunglasses/big = 1,
@@ -214,18 +212,15 @@
 /obj/item/storage/box/syndie_kit/medic/PopulateContents()
 	generate_items_inside(list(
 		/obj/item/mod/control/pre_equipped/traitor = 1,
-		/obj/item/tank/jetpack/harness = 1,
 		/obj/item/gun/ballistic/automatic/plastikov/refurbished = 1,
 		/obj/item/ammo_box/magazine/plastikov9mm/red = 2,
-		/obj/item/storage/medkit/combat = 1,
+		/obj/item/storage/medkit/tactical/premium = 1,
 		/obj/item/storage/medkit/combat/surgery = 1,
-		/obj/item/defibrillator/compact/combat/loaded = 1,
 		/obj/item/reagent_containers/hypospray/medipen/advanced = 1,
 		/obj/item/gun/medbeam = 1,
 		/obj/item/autosurgeon/syndicate/hacked_linked_surgery =1,
 		/obj/item/autosurgeon/syndicate/cyberlink_syndicate = 1,
 		/obj/item/clothing/gloves/latex/nitrile = 1,
-		/obj/item/clothing/glasses/hud/health/night/science = 1,
 	),src)
 
 /datum/voucher_set/syndicate/kit/engineer
@@ -242,7 +237,6 @@
 /obj/item/storage/box/syndie_kit/engineer/PopulateContents()
 	generate_items_inside(list(
 		/obj/item/mod/control/pre_equipped/traitor = 1,
-		/obj/item/tank/jetpack/harness = 1,
 		/obj/item/gun/ballistic/automatic/plastikov/refurbished = 1,
 		/obj/item/ammo_box/magazine/plastikov9mm/red = 2,
 		/obj/item/storage/belt/utility/syndicate = 1,
