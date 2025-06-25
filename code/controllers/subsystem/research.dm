@@ -341,8 +341,7 @@ SUBSYSTEM_DEF(research)
 /datum/controller/subsystem/research/proc/checkxenos()
 	var/xeno_count = 1
 	var/datum/team/xeno/xeno_team = locate(/datum/team/xeno) in GLOB.antagonist_teams
-	if(xeno_team)
-		for(var/datum/mind/alien in xeno_team.members)
-			if(istype(get_area(alien.current), /area/station/science/xenobiology/cell)  && alien.current.stat != DEAD)
-				xeno_count++
+	for(var/datum/mind/alien in xeno_team?.members)
+		if(istype(get_area(alien.current), /area/station/science/xenobiology/cell)  && alien.current.stat != DEAD)
+			xeno_count++
 	return xeno_count
