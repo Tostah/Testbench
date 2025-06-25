@@ -82,6 +82,7 @@
 
 //XENO
 /mob/living/carbon/alien/mind_initialize()
+	. = ..()
 	if(mind.has_antag_datum(/datum/antagonist/xeno)|| mind.has_antag_datum(/datum/antagonist/xeno/captive))
 		return //already has an antag datum, no need to add it again)
 	mind.add_antag_datum(/datum/antagonist/xeno)
