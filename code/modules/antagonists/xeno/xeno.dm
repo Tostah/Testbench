@@ -95,16 +95,14 @@
 
 /mob/living/carbon/alien/proc/on_xenobio_cell_occupancy_changed()
 	var/datum/team/xeno/xeno_team = locate(/datum/team/xeno) in GLOB.antagonist_teams
-	if(xeno_team)
-		for(var/datum/mind/alien in xeno_team.members)
-			if(istype(get_area(alien.current), /area/station/science/xenobiology/cell)  && alien.current.stat != DEAD)
-				if(!alien.has_antag_datum(/datum/antagonist/xeno/captive))
-					alien.add_antag_datum(/datum/antagonist/xeno/captive)
-			else //make sure if they arent in xenobiology that they dont have the captive datum
-				if(alien.has_antag_datum(/datum/antagonist/xeno/captive))
-					alien.remove_antag_datum(/datum/antagonist/xeno/captive)
-			xeno_team.add_member(alien) //ensure the alien remains a part of the xeno team
-	return
+	for(var/datum/mind/alien in xeno_team?.members)
+		if(istype(get_area(alien.current), /area/station/science/xenobiology/cell)  && alien.current.stat != DEAD)
+			if(!alien.has_antag_datum(/datum/antagonist/xeno/captive))
+				alien.add_antag_datum(/datum/antagonist/xeno/captive)
+		else //make sure if they arent in xenobiology that they dont have the captive datum
+			if(alien.has_antag_datum(/datum/antagonist/xeno/captive))
+				alien.remove_antag_datum(/datum/antagonist/xeno/captive)
+		xeno_team.add_member(alien) //ensure the alien remains a part of the xeno team
 /mob/living/carbon/alien/on_wabbajacked(mob/living/new_mob)
 	. = ..()
 	if(!mind)
