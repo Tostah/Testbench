@@ -1,0 +1,7 @@
+author: "Ice-Type"
+delete-after: True
+changes:
+  - balance: "Hardlight spears have lowered damage on hit, however have much more lethal embed damage, high AP, and esword-level melee damage."
+  - balance: "Commanding hardlight spears are cheaper, to fit their lower power level"
+  - bugfix: "Jagged bolts now are as powerful as before."
+  - code_imp: "A handful of files have been pulled out of modularisation"
