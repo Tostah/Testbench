@@ -14,6 +14,11 @@
   - balance: Instead, the disarm tosses the item away from the both of you, potentially
       into a nearby bin or clown.
   - balance: Halved the curator's whip tripping time to 2 seconds.
+  - bugfix: Oozelings will no longer literally lose their brain upon being sacrificed
+      by a heretic.
+  - bugfix: Tracking a target who's beheaded or an oozeling core using your living
+      heart as a heretic will now actually show the brain/core sprite, instead of
+      nothing at all.
   Absolucy, Mothblocks:
   - balance: Instead of too much damage to the head beheading someone, it will now
       split their skull in half. While their skull is open, you can rip out their
@@ -56,6 +61,20 @@
       but packs a mean punch and can cut through even rwalls.
   - rscadd: A new emote, that allows you to nod twice.
   - qol: Fireaxes now destroy windowsills in one hit, no need to whip out a wrench.
+  Ice-Type:
+  - balance: Hardlight spears have lowered damage on hit, however have much more lethal
+      embed damage, high AP, and esword-level melee damage.
+  - balance: Commanding hardlight spears are cheaper, to fit their lower power level
+  - bugfix: Jagged bolts now are as powerful as before.
+  - code_imp: A handful of files have been pulled out of modularisation
+  MrBagHead:
+  - rscadd: The Seed Splicer's infusion process has been overhauled. Synthesizable
+      Reagents from a beaker can now be infused into a seed one by one. Each reagent
+      in the beaker has a chance to be infused into the seed, with the chance increasing
+      based on the reagent's volume (1% per 5 units).
+  - balance: Infusing seeds now causes damage. The total volume of reagents in the
+      beaker will inflict a base amount of damage to the seed (0.1 damage per unit
+      of reagent). Seeds can be destroyed if they take too much damage.
   Shoddd:
   - balance: boxing no longer uses rng
   - balance: boxers can now grab people who are laying down
@@ -72,6 +91,7 @@
   flleeppyy:
   - admin: stealthed admin logs now show the key they are/were under
   - rscadd: OOC pronouns
+  - rscadd: lemons have a unique suicide now.
   iamcooldan:
   - rscadd: more biogenerator items
   - rscadd: cow cubes and pig cubes
