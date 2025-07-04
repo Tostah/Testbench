@@ -1,0 +1,4 @@
+author: "Absolucy"
+delete-after: True
+changes:
+  - bugfix: "Jacob's ladder now skips the colony and reebe Z-levels."
