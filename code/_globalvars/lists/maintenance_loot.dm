@@ -204,6 +204,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/storage/belt/medical = 1,
 		/obj/item/storage/belt/utility = 1,
 		/obj/item/pen/screwdriver = 1,
+		/obj/item/a_gift/anything/wiz_name = 1, //Gotta have the mystery gifts
 		) = 8,
 
 //monkestation edit start
@@ -400,7 +401,6 @@ GLOBAL_LIST_INIT(oddity_loot, list(//oddity: strange or crazy items
 		*/ // MONKESTATION EDIT END
 		/obj/item/toy/cards/deck/tarot/haunted = 1,
 		/obj/item/organ/internal/butt/atomic = 1,
-		/obj/item/a_gift/anything/wiz_name = 1, //Here's your
 	))
 
 
