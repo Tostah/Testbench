@@ -54,13 +54,29 @@
 	objective.owner = owner
 	objectives += objective
 
-//captive xenos
 /datum/antagonist/xeno/captive
 	name = "\improper Captive Xenomorph"
+	///Our associated antagonist team for captive xenomorphs
+	var/datum/team/xeno/captive/captive_team
+
+/datum/antagonist/xeno/captive/create_team(datum/team/xeno/captive/new_team)
+	if(!new_team)
+		for(var/datum/antagonist/xeno/captive/captive_xeno in GLOB.antagonists)
+			if(!captive_xeno.owner || !captive_xeno.captive_team)
+				continue
+			captive_team = captive_xeno.captive_team
+			return
+		captive_team = new
+		captive_team.progenitor = owner
+	else
+		if(!istype(new_team))
+			CRASH("Wrong xeno team type provided to create_team")
+		captive_team = new_team
+
+/datum/antagonist/xeno/captive/get_team()
+	return captive_team
 
 /datum/antagonist/xeno/captive/forge_objectives()
-	if(locate(/datum/objective/escape_captivity) in objectives)
-		return
 	var/datum/objective/escape_captivity/objective = new
 	objective.owner = owner
 	objectives += objective
