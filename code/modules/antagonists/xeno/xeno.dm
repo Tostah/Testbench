@@ -54,13 +54,6 @@
 	objective.owner = owner
 	objectives += objective
 
-///Captive Xenomorphs team
-/datum/team/xeno/captive
-	name = "\improper Captive Aliens"
-	///The first member of this team, presumably the queen.
-	var/datum/mind/progenitor
-	var/captive_xenos = 1
-
 /datum/antagonist/xeno/captive
 	name = "\improper Captive Xenomorph"
 	///Our associated antagonist team for captive xenomorphs
@@ -75,6 +68,7 @@
 			return
 		captive_team = new
 		captive_team.progenitor = owner
+		antag_flags |= FLAG_ANTAG_CAP_IGNORE
 	else
 		if(!istype(new_team))
 			CRASH("Wrong xeno team type provided to create_team")
@@ -102,6 +96,13 @@
 
 /datum/objective/advance_hive/check_completion()
 	return owner.current.stat != DEAD
+
+///Captive Xenomorphs team
+/datum/team/xeno/captive
+	name = "\improper Captive Aliens"
+	///The first member of this team, presumably the queen.
+	var/datum/mind/progenitor
+	var/captive_xenos = 1
 
 //XENO
 /mob/living/carbon/alien/mind_initialize()
