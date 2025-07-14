@@ -54,6 +54,13 @@
 	objective.owner = owner
 	objectives += objective
 
+///Captive Xenomorphs team
+/datum/team/xeno/captive
+	name = "\improper Captive Aliens"
+	///The first member of this team, presumably the queen.
+	var/datum/mind/progenitor
+
+
 /datum/antagonist/xeno/captive
 	name = "\improper Captive Xenomorph"
 	///Our associated antagonist team for captive xenomorphs
