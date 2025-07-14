@@ -339,9 +339,7 @@ SUBSYSTEM_DEF(research)
 		scientific_partners += partner
 
 /datum/controller/subsystem/research/proc/checkxenos()
-	var/xeno_count = 1
-	var/datum/team/xeno/captive/xeno_team = locate(/datum/team/xeno/captive) in GLOB.antagonist_teams
-	for(var/datum/mind/alien in xeno_team?.members)
-		if(istype(get_area(alien.current), /area/station/science/xenobiology/cell)  && alien.current.stat != DEAD)
-			xeno_count++
-	return xeno_count
+	var/datum/team/xeno/captive/captive_team = locate(/datum/team/xeno/captive) in GLOB.antagonist_teams
+	if(captive_team)
+		return 1 + captive_team.captive_xenos
+	return 1

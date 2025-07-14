@@ -59,7 +59,7 @@
 	name = "\improper Captive Aliens"
 	///The first member of this team, presumably the queen.
 	var/datum/mind/progenitor
-
+	var/captive_xenos = 1
 
 /datum/antagonist/xeno/captive
 	name = "\improper Captive Xenomorph"
@@ -123,10 +123,12 @@
 		if(istype(get_area(alien.current), /area/station/science/xenobiology/cell)  && alien.current.stat != DEAD)
 			if(!alien.has_antag_datum(/datum/antagonist/xeno/captive))
 				alien.add_antag_datum(/datum/antagonist/xeno/captive)
-			captive_team.add_member(alien) //ensure the alien is a part of the captive team
+				captive_team.captive_xenos++
+				captive_team.add_member(alien)
 		else //make sure if they arent in xenobiology that they dont have the captive datum
 			if(alien.has_antag_datum(/datum/antagonist/xeno/captive))
 				alien.remove_antag_datum(/datum/antagonist/xeno/captive)
+				captive_team.captive_xenos--
 		xeno_team.add_member(alien) //ensure the alien remains a part of the xeno team
 /mob/living/carbon/alien/on_wabbajacked(mob/living/new_mob)
 	. = ..()
