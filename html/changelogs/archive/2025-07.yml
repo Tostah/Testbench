@@ -135,5 +135,86 @@
 2025-07-04:
   Absolucy:
   - qol: Hopefully restored the original quick-equip behavior somewhat.
+  - bugfix: Jacob's ladder now skips the colony and reebe Z-levels.
   EssentialTomato:
   - bugfix: Fixed extreme case of empathy while relocating someone's limb.
+2025-07-06:
+  Absolucy:
+  - admin: 'Added some more Lua/SDQL2 wrappers: _floor(), _ceil(), _typesof(), _uppertext(),
+      _html_encode(), _html_decode(), _url_encode(), and _url_decode()'
+  - bugfix: Fixed the unborgable quirk not actually working.
+  - bugfix: Fixed bloodsuckers being able to spam their coffin to open a bunch of
+      blood thickening prompts to rank up when they really shouldn't be able to.
+  - bugfix: The air on the planet used for the the hermit/colony ghost role will no
+      longer kill you.
+  Cmpwarrior:
+  - rscadd: Added a new AI Core design based off of Tenna (from Deltarune)
+  - bugfix: Removed stray white pixels from some AI core sprites.
+  Fikou:
+  - admin: _generator wrapper for sdql, RandList proc for generators
+2025-07-07:
+  EssentialTomato:
+  - map: Fixed Pubbystation Artifact science access,
+2025-07-09:
+  Absolucy:
+  - qol: 'A few sounds no longer go through walls: grandfather clock ticking, whistles,
+      wumpas, and boulder processing.'
+  QueenReduviidae:
+  - bugfix: Chickens possible mutation scan now includes required items.
+  - bugfix: Pigeons are no longer basically impossible to get.
+  iamcooldan:
+  - bugfix: biogen now actually dispenses water
+2025-07-11:
+  Absolucy:
+  - rscdel: Fully removed cyberlinks from the game. You can just use implants now
+      without having to solve a maze 5 times.
+  - rscdel: The Neuralinked quirk is also gone, as cyberlinks are no more.
+  Addust:
+  - rscadd: Free Miners have been added, based off the ghostrole from Yogstation.
+  Coll6:
+  - bugfix: Uncapped organs can be repaired again like brains.
+  - code_imp: Force maxhealth to default to organ's maxHealth when argument is null.
+  EssentialTomato:
+  - bugfix: Minor hair dye spray fix.
+  Ice-Type:
+  - rscdel: The fireplace no longer makes sound
+  KittyNoodle:
+  - rscadd: Ethereals can now wear underclothes.
+2025-07-12:
+  Absolucy:
+  - bugfix: Fixed xenobio golem mind transfer stuff resulting in you being marked
+      as your own master.
+  - qol: The storyteller should no longer roll high-threat roundstart antags two rounds
+      in a row.
+  Coll6:
+  - code_imp: Underlying admin verb system ported to AVD
+  - code_imp: Mentors converted to implement AVD system
+  - code_imp: Mentor file reading edits and database storing.
+2025-07-13:
+  567Turtle, Absolucy:
+  - rscadd: Added a new species, Onis!
+  - rscadd: Onis have slightly more health, more resistant to wounds, are slightly
+      slower than normal humans, are stunned for slightly longer, and are resistant
+      to heat but much weaker to cold.
+  - rscadd: Onis have a (very much nerfed) fire breath.
+  - bugfix: Fixed bodypart speed modifiers not properly updating when species is set.
+  Absolucy:
+  - admin: Added logging to various heretic spells, such as moon smile.
+  - admin: Added logging for starting a Spess.tv stream with the broadcast camera.
+  - bugfix: Fixed a rare edge-case where you could get rewarded for station goal completion
+      multiple times.
+  - bugfix: Fixed unlinking the launchpad remote not working.
+  - bugfix: (Melbert) Fixes some atmos and record related log messages.
+  - bugfix: (Sealed101) sanity dropping below zero should now properly slowly recover
+      back to zero instead of dropping even further.
+  - sound: (grungussuss) ambience no longer gets cut off for ghosts.
+  - qol: Cleaner slimes will now target trash on top of "blocked" turfs (something
+      with a dense object that it can't cross over) when they can still path right
+      next to it just fine.
+  Ice-Type:
+  - rscadd: Gives NT representatives a good assistant points punchcard.
+  ThePooba:
+  - rscadd: gives slasher an unremoveable backpack you know what you did
+  antlersss:
+  - rscadd: Added new Antlers plushie
+  - bugfix: 100% more Antlers
