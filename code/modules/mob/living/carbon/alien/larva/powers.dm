@@ -50,7 +50,7 @@
 
 	return TRUE
 
-	/datum/action/cooldown/alien/neutered_larva_evolve
+/datum/action/cooldown/alien/neutered_larva_evolve
 	name = "Neutered Evolve"
 	desc = "Evolve into a higher alien caste."
 	button_icon_state = "alien_evolve_larva"
