@@ -40,9 +40,6 @@
 	else
 		var/datum/action/cooldown/alien/larva_evolve/evolution = new(src)
 		evolution.Grant(src)
-		var/datum/action/cooldown/alien/hide/hide = new(src)
-	hide.Grant(src)
-	return ..()
 	var/datum/action/cooldown/alien/hide/hide = new(src)
 	hide.Grant(src)
 	return ..()
