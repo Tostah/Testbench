@@ -272,7 +272,7 @@
 
 /obj/item/clothing/mask/facehugger/lamarr
 	name = "Lamarr"
-	desc = "The Research Director's pet, a domesticated and debeaked xenomorph facehugger. Friendly, but may still try to couple with your head."
+	desc = "The Research Director's pet, a neutered facehugger. It can't make an infestation, but it can still make a larva burst out of you."
 	neutered = TRUE
 
 /obj/item/clothing/mask/facehugger/dead
