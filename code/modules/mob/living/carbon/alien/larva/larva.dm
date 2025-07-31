@@ -36,6 +36,7 @@
 		ADD_TRAIT(src, TRAIT_NEUTERED, INNATE_TRAIT)
 		var/datum/action/cooldown/alien/neutered_larva_evolve/evolution = new(src)
 		evolution.Grant(src)
+		src.name = "Lamarr"
 	else
 		var/datum/action/cooldown/alien/larva_evolve/evolution = new(src)
 		evolution.Grant(src)
