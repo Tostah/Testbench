@@ -11,19 +11,15 @@
 	maxHealth = 25
 	health = 25
 	hardcrit_threshold = HEALTH_THRESHOLD_CRIT
-
 	rotate_on_lying = FALSE
-
 	default_num_legs = 1
 	num_legs = 1 //Alien larvas always have a movable apendage.
 	usable_legs = 1 //Alien larvas always have a movable apendage.
 	default_num_hands = 0
-
 	bodyparts = list(
 		/obj/item/bodypart/chest/larva,
 		/obj/item/bodypart/head/larva,
 	)
-
 	var/amount_grown = 0
 	var/max_grown = 100
 	var/time_of_birth
@@ -33,48 +29,49 @@
 /mob/living/carbon/alien/larva/Initialize(mapload)
 	var/datum/action/cooldown/alien/larva_evolve/evolution = new(src)
 	evolution.Grant(src)
+/mob/living/carbon/alien/larva/Initialize(mapload, neuter)
+	// If a larva is neutered or not it gets a different ability and trait
+	if(neuter)
+		ADD_TRAIT(src, TRAIT_NEUTERED, INNATE_TRAIT)
+		var/datum/action/cooldown/alien/neutered_larva_evolve/evolution = new(src)
+		evolution.Grant(src)
+		src.name = "Lamarr"
+	else
+		var/datum/action/cooldown/alien/larva_evolve/evolution = new(src)
+		evolution.Grant(src)
 	var/datum/action/cooldown/alien/hide/hide = new(src)
 	hide.Grant(src)
 	return ..()
 
+//END monkeystation edit
 /mob/living/carbon/alien/larva/create_internal_organs()
 	organs += new /obj/item/organ/internal/alien/plasmavessel/small/tiny
 	..()
-
 //This needs to be fixed
 // This comment is 12 years old I hope it's fixed by now
 /mob/living/carbon/alien/larva/get_status_tab_items()
 	. = ..()
 	. += "Progress: [amount_grown]/[max_grown]"
-
 /mob/living/carbon/alien/larva/Login()
 	. = ..()
 	if(!. || !client)
 		return FALSE
 	to_chat(src, "<b>You are an alien larva. Hide from danger until you can evolve.<br>Use say :a to communicate with the hivemind.</b>")
-
 /mob/living/carbon/alien/larva/adjustPlasma(amount)
 	if(stat != DEAD && amount > 0)
 		amount_grown = min(amount_grown + 1, max_grown)
 	..(amount)
-
 //can't equip anything
 /mob/living/carbon/alien/larva/attack_ui(slot_id, params)
 	return
-
-
 // new damage icon system
 // now constructs damage icon for each organ from mask * damage field
-
 /mob/living/carbon/alien/larva/toggle_throw_mode()
 	return
-
 /mob/living/carbon/alien/larva/start_pulling(atom/movable/AM, state, force = move_force, supress_message = FALSE)
 	return
-
 /mob/living/carbon/alien/larva/canBeHandcuffed()
 	return TRUE
-
 /// Don't scramble a larva's body parts, it doesn't have any
 /mob/living/carbon/alien/larva/bioscramble(scramble_source)
 	return TRUE
