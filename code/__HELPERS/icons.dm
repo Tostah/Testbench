@@ -1474,9 +1474,9 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	var/static/list/icon_states_cache
 	if(isnull(icon_states_cache))
 #ifdef PRELOAD_ICON_EXISTS_CACHE
-		icon_states_cache = load_icon_exists_cache() || list()
+		icon_states_cache = load_icon_exists_cache() || alist()
 #else
-		icon_states_cache = list()
+		icon_states_cache = alist()
 #endif
 	// monkestation end
 	if(isnull(file) || isnull(state))
@@ -1491,15 +1491,14 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	// monkestation end
 
 	if(isnull(icon_states_cache[file]))
-		icon_states_cache[file] = list()
-/* commented out until i figure out why this is borked
-		if(isfile(file) && length(file_string)) // ensure that it's actually a file, and not a runtime icon
+		icon_states_cache[file] = alist()
+		var/file_string = "[file]"
+		if(length(file_string) && file_string != "/icon") // ensure that it's actually a file, and not a runtime icon
 			for(var/istate in json_decode(rustg_dmi_icon_states(file_string)))
 				icon_states_cache[file][istate] = TRUE
 		else // Otherwise, we have to use the slower BYOND proc
-*/
-		for(var/istate in icon_states(file))
-			icon_states_cache[file][istate] = TRUE
+			for(var/istate in icon_states(file))
+				icon_states_cache[file][istate] = TRUE
 
 	return !isnull(icon_states_cache[file][state])
 
@@ -1511,7 +1510,7 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	if(icon_exists(file, state))
 		return TRUE
 
-	var/static/list/screams = list()
+	var/static/alist/screams = alist()
 	if(!isnull(screams[file]))
 		screams[file] = TRUE
 		stack_trace("State [state] in file [file] does not exist.")
@@ -1536,7 +1535,8 @@ GLOBAL_LIST_EMPTY(icon_dimensions)
 
 /// Strips all underlays on a different plane from an appearance.
 /// Returns the stripped appearance.
-/proc/strip_appearance_underlays(mutable_appearance/appearance)
+/proc/strip_appearance_underlays(mutable_appearance/appearance) as /mutable_appearance
+	RETURN_TYPE(/mutable_appearance)
 	var/base_plane = PLANE_TO_TRUE(appearance.plane)
 	for(var/mutable_appearance/underlay as anything in appearance.underlays)
 		if(isnull(underlay))
@@ -1548,10 +1548,11 @@ GLOBAL_LIST_EMPTY(icon_dimensions)
 /**
  * Copies the passed /appearance, returns a /mutable_appearance
  *
- * Filters out certain overlays from the copy, depending on their planes
- * Prevents stuff like lighting from being copied to the new appearance
+ * Filters out certain overlays from the copy, depending on their planes.
+ * Prevents stuff like lighting from being copied to the new appearance.
  */
-/proc/copy_appearance_filter_overlays(appearance_to_copy)
+/proc/copy_appearance_filter_overlays(appearance_to_copy, recursion = 0) as /mutable_appearance
+	RETURN_TYPE(/mutable_appearance)
 	var/mutable_appearance/copy = new(appearance_to_copy)
 	var/static/list/plane_whitelist = list(FLOAT_PLANE, GAME_PLANE, FLOOR_PLANE)
 
@@ -1563,7 +1564,10 @@ GLOBAL_LIST_EMPTY(icon_dimensions)
 		var/mutable_appearance/real = new()
 		real.appearance = special_overlay
 		if(PLANE_TO_TRUE(real.plane) in plane_whitelist)
-			overlays_to_keep += real
+			if(recursion)
+				overlays_to_keep += .(real, recursion - 1)
+			else
+				overlays_to_keep += real
 	copy.overlays = overlays_to_keep
 
 	var/list/underlays_to_keep = list()
@@ -1573,7 +1577,10 @@ GLOBAL_LIST_EMPTY(icon_dimensions)
 		var/mutable_appearance/real = new()
 		real.appearance = special_underlay
 		if(PLANE_TO_TRUE(real.plane) in plane_whitelist)
-			underlays_to_keep += real
+			if(recursion)
+				underlays_to_keep += .(real, recursion - 1)
+			else
+				underlays_to_keep += real
 	copy.underlays = underlays_to_keep
 
 	return copy

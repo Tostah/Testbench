@@ -14,6 +14,7 @@
 	mask = /obj/item/clothing/mask/gas/slasher2
 	belt = /obj/item/storage/belt/slasher
 	gloves = /obj/item/clothing/gloves/admiral
+	back = /obj/item/storage/backpack/cursed
 
 /datum/antagonist/slasher
 	name = "\improper Slasher"
@@ -65,6 +66,8 @@
 	var/list/seers = list()
 	///this is the time counter for stalking
 	var/time_counter = 0
+	//aggrograb for slasher
+	var/datum/martial_art/slasher_grab/grabart
 
 /datum/antagonist/slasher/on_gain()
 	. = ..() // Call parent first
@@ -97,7 +100,10 @@
 	. = ..()
 	var/mob/living/current_mob = mob_override || owner.current
 	current_mob.overlay_fullscreen("slasher_prox", /atom/movable/screen/fullscreen/nearby, 1)
-
+	if(ishuman(current_mob))
+		grabart = new(null)
+		var/mob/living/carbon/human/slashmob = current_mob
+		grabart.teach(slashmob)
 	monitor_key = "slasher_monitor_[current_mob.ckey]"
 	tracking_beacon = current_mob.AddComponent(/datum/component/tracking_beacon, monitor_key, null, null, TRUE, "#f3d594")
 	slasher_monitor = current_mob.AddComponent(/datum/component/team_monitor, monitor_key, null, tracking_beacon)
@@ -106,7 +112,6 @@
 	ADD_TRAIT(current_mob, TRAIT_BATON_RESISTANCE, "slasher")
 	ADD_TRAIT(current_mob, TRAIT_CLUMSY, "slasher")
 	ADD_TRAIT(current_mob, TRAIT_DUMB, "slasher")
-	ADD_TRAIT(current_mob, TRAIT_NODEATH, "slasher")
 	ADD_TRAIT(current_mob, TRAIT_LIMBATTACHMENT, "slasher")
 	ADD_TRAIT(current_mob, TRAIT_SLASHER, "slasher")
 	ADD_TRAIT(current_mob, TRAIT_NO_PAIN_EFFECTS, "slasher")
@@ -149,24 +154,24 @@
 	source_human.delete_equipment()
 
 /datum/antagonist/slasher/on_removal()
-	. = ..()
-	owner.current.clear_fullscreen("slasher_prox", 15)
-	owner.current.remove_traits(list(TRAIT_BATON_RESISTANCE, TRAIT_CLUMSY, TRAIT_NODEATH, TRAIT_DUMB, TRAIT_LIMBATTACHMENT), "slasher")
-	for(var/datum/action/cooldown/slasher/listed_slasher as anything in powers)
-		listed_slasher.Remove(owner.current)
-	for(var/datum/weakref/held_ref as anything in heartbeats)
-		var/mob/living/carbon/human/human = held_ref.resolve()
+	if(!QDELETED(owner.current))
+		owner.current.clear_fullscreen("slasher_prox", 15)
+		REMOVE_TRAITS_IN(owner.current, "slasher")
+		for(var/datum/action/cooldown/slasher/listed_slasher as anything in powers)
+			listed_slasher.Remove(owner.current)
+
+	for(var/datum/weakref/held_ref as anything in heartbeats | mobs_with_fullscreens)
+		var/mob/living/carbon/human/human = held_ref?.resolve()
+		if(isnull(human))
+			continue
 		human.stop_sound_channel(CHANNEL_HEARTBEAT)
-		heartbeats -= held_ref
+		human.clear_fullscreen("slasher_prox", 15)
 		human.regenerate_icons()
 		reset_fear(human)
 
-	for(var/datum/weakref/held_ref as anything in mobs_with_fullscreens)
-		var/mob/living/carbon/human/human = held_ref.resolve()
-		human.clear_fullscreen("slasher_prox", 15)
-		mobs_with_fullscreens -= held_ref
-		human.regenerate_icons()
-		reset_fear(human)
+	heartbeats.Cut()
+	mobs_with_fullscreens.Cut()
+	return ..()
 
 /datum/antagonist/slasher/greet()
 	. = ..()
@@ -178,7 +183,7 @@
 	owner.current.playsound_local(null, 'monkestation/sound/ambience/antag/slasher.ogg', vol = 100, vary = FALSE, pressure_affected = FALSE)
 	owner.announce_objectives()
 
-/datum/antagonist/slasher/proc/LifeTick(mob/living/source, seconds_per_tick, times_fired)
+/datum/antagonist/slasher/proc/LifeTick(mob/living/source, seconds_between_ticks, times_fired)
 	SIGNAL_HANDLER
 
 	var/list/currently_beating = list()
@@ -252,14 +257,14 @@
 	. = ..()
 
 
-/datum/status_effect/slasher/stalking/tick(seconds_per_tick, times_fired)
+/datum/status_effect/slasher/stalking/tick(seconds_between_ticks, times_fired)
 	if(slasherdatum.stalked_human)
 		for(var/mob/living/mob in view(7, owner))
-			if(mob == owner)
+			if(mob == owner || !mob.mind)
 				continue
 			if(mob.stat == DEAD)
 				slasherdatum.failed_stalking()
-			if(!istype(mob, /mob/living/carbon/human))
+			if(!ishuman(mob))
 				slasherdatum.reset_stalking()
 			if(mob.mind.has_antag_datum(/datum/antagonist/slasher) && slasherdatum.stalked_human == owner)
 				slasherdatum.stalk_precent += (1 / 1.8) //3 minutes, hopefully.
@@ -317,7 +322,7 @@
 	owner_monitor.hide_hud()
 	reset_fear(stalked_human)
 	stalked_human = null
-	var/datum/action/cooldown/slasher/stalk_target/power = owner?.has_antag_datum(/datum/antagonist/slasher)
+	var/datum/action/cooldown/slasher/stalk_target/power = locate() in powers
 	power.StartCooldown(1)
 	to_chat(owner, span_notice("Your target is no longer spookable..."))
 
@@ -383,13 +388,9 @@
 	SIGNAL_HANDLER
 	UnregisterSignal(source, COMSIG_ITEM_DAMAGE_MULTIPLIER)
 
-/obj/item/var/last_multi = 1
-
-/datum/antagonist/slasher/proc/damage_multiplier(obj/item/source, mob/living/attacked, def_zone)
+/datum/antagonist/slasher/proc/damage_multiplier(obj/item/source, damage_multiplier_ptr, mob/living/attacked, def_zone)
 	//keeping this just in case we use it later, but the damage changing has been turned off
-	source.last_multi = 1
-
-	return TRUE
+	// *damage_multiplier_ptr = 1
 
 /datum/antagonist/slasher/proc/increase_fear(atom/movable/target, amount)
 	var/datum/weakref/weak = WEAKREF(target)
@@ -546,3 +547,22 @@
 	explanation_text = "Use your traps to slow down your victims."
 	admin_grantable = TRUE
 
+
+/datum/antagonist/slasher/antag_token(datum/mind/hosts_mind, mob/spender)
+	var/spender_key = spender.key
+	if(!spender_key)
+		CRASH("wtf, spender had no key")
+	var/turf/spawn_loc = find_safe_turf_in_maintenance()//Used for the Drop Pod type of spawn for maints only
+	if(isnull(spawn_loc))
+		message_admins("Failed to find valid spawn location for [ADMIN_LOOKUPFLW(spender)], who spent a slasher antag token")
+		CRASH("Failed to find valid spawn location for slasher antag token")
+	if(isliving(spender) && hosts_mind)
+		hosts_mind.current.unequip_everything()
+		new /obj/effect/holy(hosts_mind.current.loc)
+		QDEL_IN(hosts_mind.current, 1 SECOND)
+	var/mob/living/carbon/human/slasher = new (spawn_loc)
+	slasher.PossessByPlayer(spender_key)
+	slasher.mind.add_antag_datum(/datum/antagonist/slasher)
+	if(isobserver(spender))
+		qdel(spender)
+	message_admins("[ADMIN_LOOKUPFLW(slasher)] has been made into a slasher by using an antag token.")
