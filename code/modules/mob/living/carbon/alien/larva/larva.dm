@@ -31,7 +31,7 @@
 
 //This is fine right now, if we're adding organ specific damage this needs to be updated
 /mob/living/carbon/alien/larva/Initialize(mapload, neuter)
-	// Monkeystation EDIT. If a larva is neutered or not it gets a different ability and trait
+	// If a larva is neutered or not it gets a different ability and trait
 	if(neuter)
 		ADD_TRAIT(src, TRAIT_NEUTERED, INNATE_TRAIT)
 		var/datum/action/cooldown/alien/neutered_larva_evolve/evolution = new(src)
