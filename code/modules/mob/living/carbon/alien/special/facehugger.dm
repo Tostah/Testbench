@@ -272,7 +272,7 @@
 
 /obj/item/clothing/mask/facehugger/lamarr
 	name = "Lamarr"
-	desc = "The Research Director's pet, a neutered facehugger. It can't make an infestation, but it can still make a larva burst out of you."
+	desc = "The Research Director's pet, a facehugger. It has some sort of a tube at the end of its tail, containing a glowing green fluid."
 	neutered = TRUE
 
 /obj/item/clothing/mask/facehugger/dead
