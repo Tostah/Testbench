@@ -54,13 +54,13 @@
 
 /obj/item/clothing/mask/facehugger/proc/react_to_mob(datum/source, mob/user)
 	SIGNAL_HANDLER
-	if((stat == CONSCIOUS && !sterile) && !isalien(user))
+	if((stat == CONSCIOUS && !sterile && !neutered) && !isalien(user))
 		if(Leap(user))
 			return COMSIG_LIVING_CANCEL_PULL
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/clothing/mask/facehugger/attack_hand(mob/user, list/modifiers)
-	if((stat == CONSCIOUS && !sterile) && !isalien(user))
+	if((stat == CONSCIOUS && !sterile && !neutered) && !isalien(user))
 		if(Leap(user))
 			return
 	. = ..()
@@ -81,6 +81,8 @@
 			. += span_boldannounce("[src] seems to be active!")
 	if (sterile)
 		. += span_boldannounce("It looks like the proboscis has been removed.")
+	if (neutered)
+		. += span_boldannounce("The probiscis is filled with a glowing green fluid.")
 
 /obj/item/clothing/mask/facehugger/should_atmos_process(datum/gas_mixture/air, exposed_temperature)
 	return (exposed_temperature > 300)
@@ -146,6 +148,8 @@
 
 /obj/item/clothing/mask/facehugger/proc/Leap(mob/living/hit_mob)
 	//check if not carbon/alien/has facehugger already/ect.
+	if(neutered)
+		return FALSE //neutered facehuggers can't leap
 	if(!valid_to_attach(hit_mob))
 		return FALSE
 	var/mob/living/carbon/target = hit_mob
@@ -183,7 +187,7 @@
 	addtimer(CALLBACK(src, PROC_REF(detach)), MAX_IMPREGNATION_TIME)
 
 
-	if(!sterile)
+	if(!sterile && !neutered)
 		M.take_bodypart_damage(strength,0) //done here so that humans in helmets take damage
 		M.Unconscious(MAX_IMPREGNATION_TIME/0.3) //something like 25 ticks = 20 seconds with the default settings
 
