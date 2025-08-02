@@ -82,7 +82,7 @@
 	if (sterile)
 		. += span_boldannounce("It looks like the proboscis has been removed.")
 	if (neutered)
-		. += span_boldannounce("The probiscis is filled with a glowing green fluid.")
+		. += span_boldannounce("It looks like the proboscis is full of a green fluid.")
 
 /obj/item/clothing/mask/facehugger/should_atmos_process(datum/gas_mixture/air, exposed_temperature)
 	return (exposed_temperature > 300)
@@ -276,7 +276,7 @@
 
 /obj/item/clothing/mask/facehugger/lamarr
 	name = "Lamarr"
-	desc = "The Research Director's pet, a facehugger. It has some sort of a tube at the end of its tail, containing a glowing green fluid."
+	desc = "The Research Director's pet, a facehugger. Its tail falls limp behind it, and its proboscis is full of a glowing green fluid. It acts sluggish, as if its tired."
 	neutered = TRUE
 
 /obj/item/clothing/mask/facehugger/dead
